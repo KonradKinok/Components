@@ -1,13 +1,26 @@
-import React from "react";
-function App() {
-  return (
-    <>
-      <h1>React Homework Template</h1>
-      <h2>(Vite)</h2>
-      <h3>15.07.2024</h3>
-      <h4>07.09.2024</h4>
-    </>
-  );
-}
+import React, { useEffect, lazy } from "react";
 
-export default App;
+import { Route, Routes } from "react-router-dom";
+import { LayoutPage } from "../pages/LayoutPages/LayoutPages";
+
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const ComponentsLayoutPage = lazy(
+  () => import("../pages/ComponentsLayoutPage/ComponentLayoutPage"),
+);
+const ToolTipPage = lazy(() => import("../pages/ToolTipPage/ToolTipPage"));
+const ListPage = lazy(() => import("../pages/ListPage/ListPage"));
+const CheckboxPage = lazy(() => import("../pages/CheckBoxPage/CheckBoxPage"));
+export const App: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<LayoutPage />}>
+        <Route index element={<HomePage />} />
+        <Route path="components" element={<ComponentsLayoutPage />}>
+          <Route path="tool-tip" element={<ToolTipPage />} />
+          <Route path="list" element={<ListPage />} />
+          <Route path="checkbox" element={<CheckboxPage />} />
+        </Route>
+      </Route>
+    </Routes>
+  );
+};

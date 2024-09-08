@@ -1,4 +1,5 @@
 @import-normalize;
+
 /* bring in normalize.css styles */
 *,
 *::before,
@@ -8,15 +9,31 @@
     padding: 0;
 }
 
-body {
-    margin: 0 40px;
+:root {
+    --body-background: rgb(176, 196, 222);
+    /* header */
+    --header-background: rgb(30, 144, 255);
+    --header-text-color: rgb(255, 255, 255);
+    --header-text-hover-color: rgb(0, 0, 255);
+    --header-text-active-background: rgb(0, 0, 255);
+    /* main */
+    --main-background: rgb(135, 206, 250);
 
+    --nav-component-background:rgb(139, 0, 0);
+    --nav-component-text-color: rgb(248, 248, 255);
+    --nav-component-text-hover-color: rgb(255, 0, 0);
+    --nav-component-text-active-background: rgb(255, 0, 0);
+    --main-component-background:rgb(205, 92, 92);
+}
+
+body {
+    margin: 0 ;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: rgb(224, 217, 217);
+    background-color: var(--body-background);
 }
 
 code {
