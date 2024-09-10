@@ -1,65 +1,51 @@
 .container-tooltip-page{
-
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px;
 }
 
-.container {
-    background-color: #e9f7ff;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    color: #1E8ACC;
-    font-size: 13px;
+.container-tooltip-1{
 
-    label p {
-        margin: 0;
-        line-height: 1.5em;
-        cursor: pointer;
-    }
-
-    form {
-        display: flex;
-        align-items: center;
-        gap: 4rem;
-    }
-
-    .custom-title {
-        color: #082333;
-        font-size: 20px;
-        margin-bottom: 4px;
-    }
-
-    .toggle-switch {
-        width: 2.75rem;
-        height: 1.5rem;
-        appearance: none;
+    a[data-tooltip] {
         position: relative;
-        background-color: #A8DEFF;
-        border-radius: 100px;
-        cursor: pointer;
-        transition: background-color .2s ease-in-out;
     }
-
-    .toggle-switch::before {
+    
+    a[data-tooltip]::before,
+    a[data-tooltip]::after {
         content: '';
-        width: 1.25rem;
-        height: 1.25rem;
-        border-radius: 50%;
-        background-color: #fff;
+        display: block;
         position: absolute;
-        transform: translate3d(2px, 2px, 0);
-        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.12);
-        transition: transform .2s ease-in-out;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .2s ease-in-out;
     }
 
-    .toggle-switch:checked {
-        background-color: #26ADFF;
+    a[data-tooltip]:hover::before,
+    a[data-tooltip]:hover::after {
+        opacity: 1;
     }
 
-    .toggle-switch:hover:not(:checked) {
-        background-color: #7dceff;
+    a[data-tooltip]::after {
+        border-right: 6px solid transparent;
+        border-top: 6px solid #1E2126;
+        border-left: 6px solid transparent;
+        height: 0;
+        width: 0;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .toggle-switch:checked::before {
-        transform: translate3d(calc(1.25rem + 2px), 2px, 0);
+    a[data-tooltip]::before {
+        content: attr(data-tooltip);
+        background: #1E2126;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 13px;
+        padding: .5rem 1rem;
+        top: calc(-100% - 18px);
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
     }
-
 }

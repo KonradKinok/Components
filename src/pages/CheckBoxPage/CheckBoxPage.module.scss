@@ -1,4 +1,8 @@
-.container-tooltip-page {}
+.container-checkbox-page {
+    display: flex;
+    flex-flow: column nowrap;
+    gap:15px;
+}
 
 .container {
     background-color: #e9f7ff;
@@ -13,7 +17,7 @@
         cursor: pointer;
     }
 
-    form {
+    .form {
         display: flex;
         align-items: center;
         gap: 4rem;

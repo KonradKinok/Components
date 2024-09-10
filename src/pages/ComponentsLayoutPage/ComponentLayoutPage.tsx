@@ -22,6 +22,11 @@ const ComponentsLayoutPage = () => {
           className={({ isActive }) => (isActive ? scss.active : "")}>
           Checkbox
         </NavLink>
+        <NavLink
+          to="gradient"
+          className={({ isActive }) => (isActive ? scss.active : "")}>
+          Gradient
+        </NavLink>
       </nav>
       <div className={scss["main"]}>
         <Suspense fallback={<div>Loading page...</div>}>

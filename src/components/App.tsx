@@ -10,6 +10,7 @@ const ComponentsLayoutPage = lazy(
 const ToolTipPage = lazy(() => import("../pages/ToolTipPage/ToolTipPage"));
 const ListPage = lazy(() => import("../pages/ListPage/ListPage"));
 const CheckboxPage = lazy(() => import("../pages/CheckBoxPage/CheckBoxPage"));
+const GradientPage = lazy(() => import("../pages/GradientPage/GradientPage"));
 export const App: React.FC = () => {
   return (
     <Routes>
@@ -19,6 +20,7 @@ export const App: React.FC = () => {
           <Route path="tool-tip" element={<ToolTipPage />} />
           <Route path="list" element={<ListPage />} />
           <Route path="checkbox" element={<CheckboxPage />} />
+          <Route path="gradient" element={<GradientPage />} />
         </Route>
       </Route>
     </Routes>

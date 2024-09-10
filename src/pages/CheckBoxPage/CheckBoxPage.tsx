@@ -3,10 +3,10 @@ import scss from "./CheckBoxPage.module.scss";
 
 export default function CheckBoxPage() {
   return (
-    <div className={scss["container-tooltip-page"]}>
+    <div className={scss["container-checkbox-page"]}>
       <h1>ToolTip page</h1>
       <div className={scss["container"]}>
-        <form action="">
+        <form className={scss["form"]} action="">
           <label htmlFor="toggle-switch">
             <p className={scss["custom-title"]}>Free cancellation</p>
             <p>No extra charges</p>

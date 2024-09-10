@@ -1,0 +1,107 @@
+.article{
+   
+    background-color: white;
+    padding: 20px;
+}
+
+.card-container-gradient{
+    color: #626467;
+    font-size: 1rem;
+    width: 20rem;
+
+    .card-title {
+        color: #1E2126;
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+
+        .card-picture {
+            width: 100%;
+            height: 10rem;
+            background: linear-gradient(to right, #2af598 0%, #009efd 100%);
+    
+            border-radius: 1rem;
+            position: relative;
+    
+    
+        }
+.card-picture::before {
+    content: 'kkkkkk';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    z-index: -1;
+    transform: translateY(10%) scale(.96);
+    filter: blur(24px);
+}
+        
+}
+
+
+
+.card-container-picture {
+    color: #626467;
+    font-size: 1rem;
+    width: 100%;
+    height: 100%;
+
+
+.card-title {
+    color: #1E2126;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.card-picture {
+    width: 100%;
+    height: 10rem;
+    background: linear-gradient(to right, #2af598 0%, #009efd 100%);
+    background: url(../../images/food.jpg);
+    
+    background-size: cover;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.card-picture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    z-index: -1;
+    transform: translateY(10%) scale(.96);
+    filter: blur(24px);
+}
+}
+
+#card {
+    color: #626467;
+    font-size: 1rem;
+    width: 20rem;
+}
+
+.card-title {
+    color: #1E2126;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+#card-picture {
+    width: 100%;
+    height: 10rem;
+    background: linear-gradient(to right, #c2e404 0%, #009efd 100%);
+    
+    background-size: cover;
+    border-radius: 1rem;
+    position: relative;
+}
+
+#card-picture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    z-index: -1;
+    transform: translateY(10%) scale(.96);
+    filter: blur(24px);
+}
