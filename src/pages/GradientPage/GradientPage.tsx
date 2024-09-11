@@ -1,6 +1,6 @@
 import React from "react";
 import scss from "./GradientPage.module.scss";
-
+import picturesFood from "../../images/food.jpg";
 export default function GradientPage() {
   return (
     <section className={scss["container-gradient-page"]}>
@@ -41,7 +41,8 @@ export default function GradientPage() {
       <article className={scss["article"]}>
         <div className={scss["image-container3"]}>
           <img
-            src="../../images/food.jpg"
+            width={200}
+            src={picturesFood}
             alt="Example Image"
             className={scss["image3"]}
           />
