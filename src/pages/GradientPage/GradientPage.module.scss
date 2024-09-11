@@ -1,13 +1,20 @@
-.article{
-   
-    background-color: white;
-    padding: 20px;
+.container-gradient-page{
+       
 }
 
+.article{
+    background-color: white;
+    padding: 10px 10px 40px 10px;
+    
+}
+//Gradient
 .card-container-gradient{
     color: #626467;
     font-size: 1rem;
     width: 20rem;
+    position: relative;
+    z-index: 1;
+    
 
     .card-title {
         color: #1E2126;
@@ -15,93 +22,142 @@
         font-size: 1.25rem;
     }
 
-        .card-picture {
-            width: 100%;
-            height: 10rem;
-            background: linear-gradient(to right, #2af598 0%, #009efd 100%);
-    
-            border-radius: 1rem;
-            position: relative;
-    
-    
-        }
-.card-picture::before {
-    content: 'kkkkkk';
-    position: absolute;
-    inset: 0;
-    background: inherit;
-    z-index: -1;
-    transform: translateY(10%) scale(.96);
-    filter: blur(24px);
-}
-        
+    .card-gradient {
+        width: 100%;
+        height: 10rem;
+        background: linear-gradient(to right, #2af598 0%, #009efd 100%);
+        border-radius: 1rem;
+        position: relative;
+    }
+
+    .card-gradient::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: inherit;
+        z-index: -1;
+        transform: translateY(20%) scale(.96);
+        filter: blur(24px);
+    }
 }
 
-
-
+//Picture
 .card-container-picture {
     color: #626467;
     font-size: 1rem;
     width: 100%;
     height: 100%;
-
-
-.card-title {
-    color: #1E2126;
-    font-weight: bold;
-    font-size: 1.25rem;
-}
-
-.card-picture {
-    width: 100%;
-    height: 10rem;
-    background: linear-gradient(to right, #2af598 0%, #009efd 100%);
-    background: url(../../images/food.jpg);
-    
-    background-size: cover;
-    border-radius: 1rem;
     position: relative;
+        z-index: 1;
+
+    .card-title {
+        color: #1E2126;
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+
+    .card-picture {
+        width: 100%;
+        height: 10rem;
+        background: url(../../images/food.jpg);
+        background-size: cover;
+        border-radius: 1rem;
+        position: relative;
+    }
+
+    .card-picture::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: inherit;
+        z-index: -1;
+        transform: translateY(40%) scale(.96);
+        filter: blur(24px);
+    }
 }
 
-.card-picture::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: inherit;
-    z-index: -1;
-    transform: translateY(10%) scale(.96);
-    filter: blur(24px);
-}
-}
-
-#card {
-    color: #626467;
-    font-size: 1rem;
-    width: 20rem;
-}
-
-.card-title {
-    color: #1E2126;
-    font-weight: bold;
-    font-size: 1.25rem;
-}
-
-#card-picture {
-    width: 100%;
-    height: 10rem;
-    background: linear-gradient(to right, #c2e404 0%, #009efd 100%);
+//Picture 2
+ .image-container {
+     position: relative;
+     /* Konieczne, aby pseudo-elementy działały poprawnie */
+     display: inline-block;
     
-    background-size: cover;
-    border-radius: 1rem;
-    position: relative;
-}
+     /* Aby kontener nie zajmował całej szerokości */
+    z-index: 1;
+ }
 
-#card-picture::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: inherit;
+ .image {
+     display: block;
+    
+     /* Wyłącza domyślną przestrzeń wokół obrazka */
+     border-radius: 10px;
+     /* Zaokrąglenie narożników (opcjonalnie) */
+     position: relative;
+     /* Ustawienie pozycji do pseudo-elementu */
+     z-index: 1;
+     /* Upewnij się, że obrazek jest powyżej pseudo-elementu */
+ }
+
+ .image-container::before {
+     content: "";
+     position: absolute;
+     /* Absolutne pozycjonowanie względem kontenera */
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background: url(https://picsum.photos/id/28/200/300);
+     background-repeat: no-repeat;
+     /* Pobiera tło z rodzica */
     z-index: -1;
-    transform: translateY(10%) scale(.96);
-    filter: blur(24px);
-}
+     /* Pseudo-element poniżej obrazu */
+     transform: translateY(10%) translateX(10%) scale(0.96);
+     /* Przesunięcie i skalowanie, aby wyglądało jak cień */
+     filter: blur(30px);
+     /* Efekt rozmycia tworzący cień */
+     border-radius: 10px;
+     /* Taki sam promień jak obrazek */
+ }
+
+ //Picture 3
+ .image-container3 {
+     position: relative;
+     /* Konieczne, aby pseudo-elementy działały poprawnie */
+     display: inline-block;
+
+     /* Aby kontener nie zajmował całej szerokości */
+     z-index: 1;
+ }
+
+ .image3 {
+     display: block;
+
+     /* Wyłącza domyślną przestrzeń wokół obrazka */
+     border-radius: 10px;
+     /* Zaokrąglenie narożników (opcjonalnie) */
+     position: relative;
+     /* Ustawienie pozycji do pseudo-elementu */
+     z-index: 1;
+     /* Upewnij się, że obrazek jest powyżej pseudo-elementu */
+ }
+
+ .image-container3::before {
+     content: "";
+     position: absolute;
+     /* Absolutne pozycjonowanie względem kontenera */
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background: url(https://picsum.photos/id/28/200/300);
+     background-repeat: no-repeat;
+     /* Pobiera tło z rodzica */
+     z-index: -1;
+     /* Pseudo-element poniżej obrazu */
+     transform: translateY(10%) translateX(10%) scale(0.96);
+     /* Przesunięcie i skalowanie, aby wyglądało jak cień */
+     filter: blur(30px);
+     /* Efekt rozmycia tworzący cień */
+     border-radius: 10px;
+     /* Taki sam promień jak obrazek */
+ }

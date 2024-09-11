@@ -7,11 +7,8 @@ export default function GradientPage() {
       <h1>Gradient</h1>
       <article id="1" className={scss["article"]}>
         <h2>1. Gradient shadow</h2>
-        <div
-          id="card"
-          itemID="card"
-          className={scss["card-container-gradient"]}>
-          <div id="card-picture" className={scss["card-picture"]}></div>
+        <div id="card" className={scss["card-container-gradient"]}>
+          <div id="card-picture" className={scss["card-gradient"]}></div>
 
           <p className={scss["card-title"]}>Comfort food</p>
           <p>
@@ -32,7 +29,24 @@ export default function GradientPage() {
           </p>
         </div>
       </article>
+      <article className={scss["article"]}>
+        <div className={scss["image-container"]}>
+          <img
+            src="https://picsum.photos/id/28/200/300"
+            alt="Example Image"
+            className={scss["image"]}
+          />
+        </div>
+      </article>
+      <article className={scss["article"]}>
+        <div className={scss["image-container3"]}>
+          <img
+            src="../../images/food.jpg"
+            alt="Example Image"
+            className={scss["image3"]}
+          />
+        </div>
+      </article>
     </section>
   );
 }
-("../../images/food.jpg");
