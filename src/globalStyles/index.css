@@ -18,12 +18,22 @@
     --header-text-active-background: rgb(0, 0, 255);
     /* main */
     --main-background: rgb(135, 206, 250);
-
+    /* component */
     --nav-component-background:rgb(139, 0, 0);
     --nav-component-text-color: rgb(248, 248, 255);
     --nav-component-text-hover-color: rgb(255, 0, 0);
     --nav-component-text-active-background: rgb(255, 0, 0);
     --main-component-background:rgb(205, 92, 92);
+    /* others */
+        --nav-others-background: rgb(0, 100, 0);
+        --nav-others-text-color: rgb(248, 248, 255);
+        --nav-others-text-hover-color: rgb(124, 252, 0);
+        --nav-others-text-active-background: rgb(124, 252, 0);
+        --main-others-background: rgb(0, 250, 154);
+    /* footer */
+    --footer-background: rgb(30, 144, 255);
+    --footer-text-color: rgb(0, 0, 255);
+    
 }
 
 body {
@@ -34,6 +44,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--body-background);
+    
 }
 
 code {

@@ -1,12 +1,13 @@
-.nav-component {
+.nav-others {
     display: flex;
-    
+
     font-weight: 800;
     font-size: 1.4rem;
-background-color: var(--nav-component-background);
-padding: 15px;
+    background-color: var(--nav-others-background);
+    padding: 15px;
+
     a {
-        color: var(--nav-component-text-color);
+        color: var(--nav-others-text-color);
         padding: 8px 16px;
         border-radius: 4px;
         text-decoration: none;
@@ -16,13 +17,13 @@ padding: 15px;
     }
 
     a:hover {
-        color: var(--nav-component-text-hover-color);
+        color: var(--nav-others-text-hover-color);
         cursor: pointer;
     }
 
     a.active {
-        color: var(--nav-component-text-color);
-        background-color: var(--nav-component-text-active-background);
+        color: var(--nav-others-text-color);
+        background-color: var(--nav-others-text-active-background);
     }
 
     .lang {
@@ -30,9 +31,9 @@ padding: 15px;
     }
 }
 
-.main{
-    
-    background-color: var(--main-component-background);
+.main-others {
+
+    background-color: var(--main-others-background);
     padding: 15px;
-    
+
 }

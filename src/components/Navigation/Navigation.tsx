@@ -36,6 +36,11 @@ export const Navigation: React.FC = () => {
         className={({ isActive }) => (isActive ? scss.active : "")}>
         {langDictionary.navComponents[currentLanguage as Languages]}
       </NavLink>
+      <NavLink
+        to="/others"
+        className={({ isActive }) => (isActive ? scss.active : "")}>
+        {langDictionary.navOthers[currentLanguage as Languages]}
+      </NavLink>
     </nav>
   );
 };

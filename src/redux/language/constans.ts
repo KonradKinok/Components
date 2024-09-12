@@ -21,6 +21,10 @@ export const langDictionary = {
         [Languages.EN]: "Contacts",
         [Languages.PL]: "Kontakty",
     },
+    navOthers: {
+        [Languages.EN]: "Others",
+        [Languages.PL]: "Inne",
+    },
     navWelcome: {
         [Languages.EN]: "Welcome",
         [Languages.PL]: "Witaj",
