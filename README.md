@@ -16,7 +16,7 @@ Currently, two official plugins are available:
 1. [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
    npm install @reduxjs/toolkit
    npm install @reduxjs/toolkit react-redux
-2. [Hot-Tost](https://redux-toolkit.js.org/introduction/getting-started)
+2. [React Hot Tost](https://react-hot-toast.com/)
    npm install react-hot-toast
 3. [React Icons](https://react-icons.github.io/react-icons/)
    npm install react-icons --save
