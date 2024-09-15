@@ -12,6 +12,8 @@ const ToolTipPage = lazy(() => import("../pages/ToolTipPage/ToolTipPage"));
 const ListPage = lazy(() => import("../pages/ListPage/ListPage"));
 const CheckboxPage = lazy(() => import("../pages/CheckBoxPage/CheckBoxPage"));
 const GradientPage = lazy(() => import("../pages/GradientPage/GradientPage"));
+const IconsPage = lazy(() => import("../pages/IconsPage/IconsPage"));
+const GridPage = lazy(() => import("../pages/GridPage/GridPage"));
 // Others
 const OthersLayoutPage = lazy(
   () => import("../pages/OthersLayoutPage/OthersLayoutPage"),
@@ -29,6 +31,8 @@ export const App: React.FC = () => {
           <Route path="list" element={<ListPage />} />
           <Route path="checkbox" element={<CheckboxPage />} />
           <Route path="gradient" element={<GradientPage />} />
+          <Route path="icons" element={<IconsPage />} />
+          <Route path="grid" element={<GridPage />} />
         </Route>
         <Route path="others" element={<OthersLayoutPage />}>
           <Route path="krzyzowka" element={<KrzyzowkaPage />} />

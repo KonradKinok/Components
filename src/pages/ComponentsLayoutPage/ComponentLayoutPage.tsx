@@ -27,6 +27,16 @@ const ComponentsLayoutPage = () => {
           className={({ isActive }) => (isActive ? scss.active : "")}>
           Gradient
         </NavLink>
+        <NavLink
+          to="icons"
+          className={({ isActive }) => (isActive ? scss.active : "")}>
+          Icons
+        </NavLink>
+        <NavLink
+          to="grid"
+          className={({ isActive }) => (isActive ? scss.active : "")}>
+          Grid
+        </NavLink>
       </nav>
       <div className={scss["main"]}>
         <Suspense fallback={<div>Loading page...</div>}>

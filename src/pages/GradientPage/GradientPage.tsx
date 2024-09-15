@@ -38,6 +38,7 @@ export default function GradientPage() {
           />
         </div>
       </article>
+
       <article className={scss["article"]}>
         <div className={scss["image-container3"]}>
           <img
