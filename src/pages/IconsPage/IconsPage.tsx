@@ -73,10 +73,10 @@ export default function IconsPage() {
         <div className={scss["container-icons-page-3"]}>
           <img src={flagIcon} alt="" width={64} height={64} />
           <p>
-            {flagIcon}Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Commodi quasi fugiat voluptas, nisi at officia error vero libero
-            tempora iure fuga eos quaerat facilis possimus debitis iusto quam
-            dolorem eaque!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+            quasi fugiat voluptas, nisi at officia error vero libero tempora
+            iure fuga eos quaerat facilis possimus debitis iusto quam dolorem
+            eaque!
           </p>
         </div>
       </article>

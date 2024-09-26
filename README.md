@@ -28,3 +28,5 @@ Currently, two official plugins are available:
    npm i react
 7. [Axios](https://axios-http.com/docs/intro)
    npm install axios
+8. [React Select](https://react-select.com/home#getting-started)
+   npm i --save react-select
