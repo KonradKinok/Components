@@ -19,6 +19,26 @@ export default function CheckBoxPage() {
           />
         </form>
       </div>
+      <div className={scss["container"]}>
+        <form className={scss["form"]} action="">
+          <label htmlFor="toggle-switch">
+            <p className={scss["custom-title"]}>Free cancellation</p>
+            <p>No extra charges</p>
+          </label>
+          <input
+            type="radio"
+            name="toggle-switch"
+            id="toggle-switch"
+            className={scss["toggle-switch"]}
+          />
+          <input
+            type="radio"
+            name="toggle-switch"
+            id="toggle-switch"
+            className={scss["toggle-switch"]}
+          />
+        </form>
+      </div>
     </div>
   );
 }
