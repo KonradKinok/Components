@@ -15,6 +15,7 @@ const GradientPage = lazy(() => import("../pages/GradientPage/GradientPage"));
 const IconsPage = lazy(() => import("../pages/IconsPage/IconsPage"));
 const GridPage = lazy(() => import("../pages/GridPage/GridPage"));
 const ComboBoxPage = lazy(() => import("../pages/ComboBoxPage/ComboBoxPage"));
+const ButtonPage = lazy(() => import("../pages/ButtonPage/ButtonPage"));
 // Others
 const OthersLayoutPage = lazy(
   () => import("../pages/OthersLayoutPage/OthersLayoutPage"),
@@ -35,6 +36,7 @@ export const App: React.FC = () => {
           <Route path="icons" element={<IconsPage />} />
           <Route path="grid" element={<GridPage />} />
           <Route path="combobox" element={<ComboBoxPage />} />
+          <Route path="button" element={<ButtonPage />} />
         </Route>
         <Route path="others" element={<OthersLayoutPage />}>
           <Route path="krzyzowka" element={<KrzyzowkaPage />} />

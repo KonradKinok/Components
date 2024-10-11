@@ -42,6 +42,11 @@ const ComponentsLayoutPage = () => {
           className={({ isActive }) => (isActive ? scss.active : "")}>
           ComboBox
         </NavLink>
+        <NavLink
+          to="button"
+          className={({ isActive }) => (isActive ? scss.active : "")}>
+          Button
+        </NavLink>
       </nav>
       <div className={scss["main"]}>
         <Suspense fallback={<div>Loading page...</div>}>
