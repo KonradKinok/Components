@@ -12,4 +12,23 @@
         }
     }
 
+    .icon-change-text:hover {
+        cursor: url('../../images/videoSmal.png') 64 64, auto;
+    }
+
+    .icon-change-figure {
+        padding: 40px;
+        background-color: yellow;
+        // cursor: url('https://res.cloudinary.com/dvkugaw3b/image/upload/v1641562028/cursor_ad12rf.png'), auto;
+    }
+
+    .icon-change-figure:hover {
+        cursor: url('https://res.cloudinary.com/dvkugaw3b/image/upload/v1641562028/cursor_ad12rf.png') 8 8, auto;
+    }
+
+    .button-icon-change {
+        padding: 20px;
+        cursor: url('../../images/video.svg') 64 64, auto;
+    }
+
 }

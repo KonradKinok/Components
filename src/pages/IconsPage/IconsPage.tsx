@@ -1,6 +1,8 @@
 import React from "react";
 import libraryIcon from "../../images/icons.svg";
+// import videoIcon from "../../images/icons.svg#Capa_1";
 import flagIcon from "../../images/flag-us-svgrepo-com.svg";
+import video from "../../images/video.svg";
 import scss from "./IconsPage.module.scss";
 export default function IconsPage() {
   return (
@@ -78,6 +80,31 @@ export default function IconsPage() {
             iure fuga eos quaerat facilis possimus debitis iusto quam dolorem
             eaque!
           </p>
+        </div>
+      </article>
+      <article className={scss["article-icons-page-5"]}>
+        <h2>5. Icon svg from file 3</h2>
+        <div className={scss["container-icons-page-3"]}>
+          <img src={video} alt="" width={64} height={64} />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+            quasi fugiat voluptas, nisi at officia error vero libero tempora
+            iure fuga eos quaerat facilis possimus debitis iusto quam dolorem
+            eaque!
+          </p>
+        </div>
+      </article>
+      <article className={scss["article-icons-page-6"]}>
+        <h2>6. Icon change</h2>
+        <div className={scss["container-icons-page-6"]}>
+          <p className={scss["icon-change-text"]}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+            quasi fugiat voluptas, nisi at officia error vero libero temporap
+            iure fuga eos quaerat facilis possimus debitis iusto quam dolorem
+            eaque!
+          </p>
+          <button className={scss["button-icon-change"]}>button</button>
+          <div className={scss["icon-change-figure"]}></div>
         </div>
       </article>
     </section>
