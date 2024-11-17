@@ -17,6 +17,7 @@ const GridPage = lazy(() => import("../pages/GridPage/GridPage"));
 const ComboBoxPage = lazy(() => import("../pages/ComboBoxPage/ComboBoxPage"));
 const ButtonPage = lazy(() => import("../pages/ButtonPage/ButtonPage"));
 const VideoPage = lazy(() => import("../pages/VideoPage/VideoPage"));
+const FormsPage = lazy(() => import("../pages/FormsPage/FormsPage"));
 // Others
 const OthersLayoutPage = lazy(
   () => import("../pages/OthersLayoutPage/OthersLayoutPage"),
@@ -24,6 +25,7 @@ const OthersLayoutPage = lazy(
 const KrzyzowkaPage = lazy(
   () => import("../pages/KrzyzowkaPage/KrzyzowkaPage"),
 );
+
 export const App: React.FC = () => {
   return (
     <Routes>
@@ -39,6 +41,7 @@ export const App: React.FC = () => {
           <Route path="combobox" element={<ComboBoxPage />} />
           <Route path="button" element={<ButtonPage />} />
           <Route path="video" element={<VideoPage />} />
+          <Route path="forms" element={<FormsPage />} />
         </Route>
         <Route path="others" element={<OthersLayoutPage />}>
           <Route path="krzyzowka" element={<KrzyzowkaPage />} />
