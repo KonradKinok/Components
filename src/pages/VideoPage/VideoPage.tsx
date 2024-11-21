@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import scss from "./VideoPage.module.scss";
 import YouTube, { YouTubeProps } from "react-youtube";
 import ReactPlayer from "react-player/lazy";
+import ReactAudioPlayer from "react-audio-player";
+import plikMuzyki from "./mp3/Tupu tup po śniegu.mp3";
 
 export default function VideoPage() {
+  //Audio
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playAudio = () => audioRef.current?.play();
+  const pauseAudio = () => audioRef.current?.pause();
+
   const reactPlayerCanPlay = ReactPlayer.canPlay(
     "https://www.youtube.com/watch?v=ysz5S6PUM-U",
   );
@@ -94,6 +102,16 @@ export default function VideoPage() {
             height="195px"
             width="320px"
           />
+        </div>
+      </div>
+      <div className={scss["container-audio"]}>
+        <h1>Audio</h1>
+        <div className={scss["custom-audio-player"]}>
+          <audio ref={audioRef} src={plikMuzyki}></audio>
+          <div className={scss["controls"]}>
+            <button onClick={playAudio}>Play</button>
+            <button onClick={pauseAudio}>Pause</button>
+          </div>
         </div>
       </div>
     </div>
