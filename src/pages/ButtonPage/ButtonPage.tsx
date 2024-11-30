@@ -60,6 +60,13 @@ export default function ButtonPage() {
           onClick={handleOnClick}>
           Button 3
         </button>
+        <button
+          name="button-4"
+          className={scss["button-4"]}
+          type="button"
+          onClick={handleOnClick}>
+          Button 4
+        </button>
       </div>
     </div>
   );
