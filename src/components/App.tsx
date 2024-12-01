@@ -25,7 +25,22 @@ const OthersLayoutPage = lazy(
 const KrzyzowkaPage = lazy(
   () => import("../pages/KrzyzowkaPage/KrzyzowkaPage"),
 );
-
+// MUI:
+const MuiLayoutPage = lazy(() =>
+  import("../pages/MuiPage/MuiLayoutPage/MuiLayoutPage").then((module) => ({
+    default: module.MuiLayoutPage,
+  })),
+);
+const MuiHome = lazy(() =>
+  import("../pages/MuiPage/MuiHome/MuiHome").then((module) => ({
+    default: module.MuiHome,
+  })),
+);
+const MuiTextField = lazy(() =>
+  import("../pages/MuiPage/MuiTextField/MuiTextField").then((module) => ({
+    default: module.MuiTextField,
+  })),
+);
 export const App: React.FC = () => {
   return (
     <Routes>
@@ -42,6 +57,11 @@ export const App: React.FC = () => {
           <Route path="button" element={<ButtonPage />} />
           <Route path="video" element={<VideoPage />} />
           <Route path="forms" element={<FormsPage />} />
+          <Route path="mui-layout-page" element={<MuiLayoutPage />}>
+            {/* <Route path="mui-home-page" element={<MuiHome />} /> */}
+            <Route index element={<MuiHome />} />
+            <Route path="mui-text-field" element={<MuiTextField />} />
+          </Route>
         </Route>
         <Route path="others" element={<OthersLayoutPage />}>
           <Route path="krzyzowka" element={<KrzyzowkaPage />} />

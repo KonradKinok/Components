@@ -1,0 +1,14 @@
+.mui-home-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px;
+  white-space: pre-wrap;
+  gap: 20px;
+
+  .mui-home-list {
+    white-space: pre-wrap;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
