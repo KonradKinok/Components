@@ -1,51 +1,9 @@
 import React from "react";
+import { KrzyzowkaWorking } from "./KrzyzowkaWorking";
+import { canCreateWords } from "./KrzyzowkaWorking";
 import scss from "./KrzyzowkaPage.module.scss";
 
 export default function KrzyzowkaPage() {
-  function canCreateWords(
-    lettersArray: string[],
-    wordsArray: string[],
-  ): string[] {
-    // Typujemy funkcję pomocniczą, która zlicza wystąpienia liter w tablicy
-    const countLetters = (arr: string[]): Record<string, number> => {
-      const letterCount: Record<string, number> = {};
-      for (const letter of arr) {
-        letterCount[letter] = (letterCount[letter] || 0) + 1;
-      }
-      return letterCount;
-    };
-
-    // Zliczamy dostępne litery w pierwszej tablicy
-    const availableLetters: Record<string, number> = countLetters(lettersArray);
-
-    // Tworzymy wynikową tablicę
-    const result: string[] = [];
-
-    // Sprawdzamy każde słowo w drugiej tablicy
-    for (const word of wordsArray) {
-      const wordLetters: Record<string, number> = countLetters(word.split("")); // Zliczamy litery w słowie
-      let canCreate = true;
-
-      // Sprawdzamy, czy słowo można utworzyć z dostępnych liter
-      for (const letter in wordLetters) {
-        if (
-          !availableLetters[letter] ||
-          wordLetters[letter] > availableLetters[letter]
-        ) {
-          canCreate = false;
-          break; // Jeśli nie możemy utworzyć słowa, przerywamy
-        }
-      }
-
-      // Jeśli możemy utworzyć słowo, dodajemy je do wyniku
-      if (canCreate) {
-        result.push(word);
-      }
-    }
-
-    return result;
-  }
-
   // Przykład użycia:
   const lettersArrayEgzample1: string[] = ["a", "b", "c", "a", "t"];
   const wordsArrayEgzample1: string[] = [
@@ -111,6 +69,7 @@ export default function KrzyzowkaPage() {
       <h1>Krzyżówka Express</h1>
       <div>
         <h2>Krzyżówka Express Egzample 1</h2>
+
         <p>
           Letter array:
           {lettersArrayEgzample1.map((item: string, index: number) => (
@@ -150,6 +109,9 @@ export default function KrzyzowkaPage() {
             <span key={index}>{item}, </span>
           ))}
         </p>
+      </div>
+      <div className={scss["krzyzowka-working-component-container"]}>
+        <KrzyzowkaWorking />
       </div>
     </div>
   );

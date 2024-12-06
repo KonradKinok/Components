@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import scss from "./FormsPage.module.scss";
+import canCreateWords from "../KrzyzowkaPage/KrzyzowkaPage";
+import {
+  FormControl,
+  IconButton,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+} from "@mui/material";
+import InputAdornment from "@mui/material/InputAdornment";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import customTheme from "./customTheme";
+import AbcOutlinedIcon from "@mui/icons-material/AbcOutlined";
+import FontDownloadOutlinedIcon from "@mui/icons-material/FontDownloadOutlined";
 
 interface FormValues {
   email: string;
@@ -8,6 +22,40 @@ interface FormValues {
 }
 
 export default function FormsPage() {
+  const [textInInput, setTextInInput] = useState("");
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTextInInput(event.target.value);
+  };
+
+  const containsNumbers = (text: string) => /\d/.test(text);
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    const handleInput = (e: Event) => {
+      const el = e.target as HTMLInputElement;
+
+      // Sprawdzenie, czy element posiada `data-color`
+      if (el && el.matches("[data-color]")) {
+        clearTimeout(timer); // Czyszczenie poprzedniego timera
+        timer = setTimeout(() => {
+          document.documentElement.style.setProperty(
+            `--color-${el.dataset.color}`,
+            el.value,
+          );
+        }, 100); // Debounce 100ms
+      }
+    };
+
+    // Dodanie nasłuchiwacza
+    document.addEventListener("input", handleInput);
+
+    // Czyszczenie nasłuchiwacza po odmontowaniu komponentu
+    return () => {
+      document.removeEventListener("input", handleInput);
+      clearTimeout(timer); // Czyszczenie timera, jeśli istnieje
+    };
+  }, []);
+
   // Ustalenie wartości początkowych
   const initialValues: FormValues = { email: "", password: "" };
 
@@ -67,6 +115,89 @@ export default function FormsPage() {
             </form>
           )}
         </Formik>
+      </div>
+      <div>
+        <h2>Text Field Custom 1</h2>
+        <div className={scss["card"]}>
+          <label className={scss["input"]}>
+            <input
+              className={scss["input__field"]}
+              type="text"
+              placeholder=" "
+            />
+            <span className={scss["input__label"]}>Some Fancy Label</span>
+          </label>
+          <label className={scss["input"]}>
+            <input
+              className={scss["input__field"]}
+              type="text"
+              placeholder=" "
+            />
+            <span className={scss["input__label"]}>Some Fancy Label</span>
+          </label>
+        </div>
+      </div>
+      <div>
+        <ThemeProvider theme={customTheme}>
+          <TextField
+            id="outlined-basic"
+            label="Input words"
+            variant="outlined"
+            helperText={
+              containsNumbers(textInInput)
+                ? "Input should not contain numbers."
+                : "Enter the words you are looking for"
+            }
+            error={containsNumbers(textInInput)} // Ustawienie błędu, jeśli wartość zawiera liczby
+            value={textInInput}
+            onChange={handleInputChange} // Obsługa zmiany wartości
+            className={scss["mui-text-field-custom"]}
+            sx={{
+              margin: "20px 0",
+              "& .MuiInputBase-input": {
+                color: "blue",
+              },
+            }}
+            slotProps={{
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <AbcOutlinedIcon />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Input words"
+            variant="outlined"
+            helperText={
+              containsNumbers(textInInput)
+                ? "Input should not contain numbers."
+                : "Enter the words you are looking for"
+            }
+            error={containsNumbers(textInInput)} // Ustawienie błędu, jeśli wartość zawiera liczby
+            value={textInInput}
+            onChange={handleInputChange} // Obsługa zmiany wartości
+            className={scss["mui-text-field-custom"]}
+            sx={{
+              margin: "20px 0",
+              "& .MuiInputBase-input": {
+                color: "blue",
+              },
+            }}
+            slotProps={{
+              input: {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <FontDownloadOutlinedIcon />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+        </ThemeProvider>
       </div>
     </div>
   );

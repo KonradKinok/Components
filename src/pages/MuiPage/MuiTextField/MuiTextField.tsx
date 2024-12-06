@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import scss from "./MuiTextField.module.scss";
-import { TextField } from "@mui/material";
+import {
+  FormControl,
+  IconButton,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+} from "@mui/material";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -9,8 +15,26 @@ import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Icon from "@mui/material/Icon";
 import Box from "@mui/material/Box";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 export const MuiTextField: React.FC = () => {
   const [textInInput, setTextInInput] = useState("");
+
+  //Input password
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
+  };
+  //-------------Input password
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextInInput(event.target.value);
@@ -63,8 +87,8 @@ export const MuiTextField: React.FC = () => {
             // }}
             slotProps={{
               input: {
-                startAdornment: (
-                  <InputAdornment position="start">
+                endAdornment: (
+                  <InputAdornment position="end">
                     <AccountCircle />
                   </InputAdornment>
                 ),
@@ -72,24 +96,57 @@ export const MuiTextField: React.FC = () => {
             }}
           />
         </div>
-        <div className={scss["mui-text-field-custom-container"]}>
-          <p>Egzamples custom text field 2:</p>
-          <div className={scss["custom-input-container"]}>
-            <input
-              type="text"
-              id="custom-input"
-              className={scss["custom-input"]}
-              required
-            />
-            <label htmlFor="custom-input" className={scss["custom-label"]}>
-              Outlined
-            </label>
-          </div>
+        <div>
+          <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+            <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+            <TextField id="input-with-sx" label="With sx" variant="standard" />
+          </Box>
         </div>
-        <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-          <AccountCircle sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-          <TextField id="input-with-sx" label="With sx" variant="standard" />
-        </Box>
+        <div>
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={showPassword ? "text" : "password"}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label={
+                      showPassword
+                        ? "hide the password"
+                        : "display the password"
+                    }
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    onMouseUp={handleMouseUpPassword}
+                    edge="end">
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Password"
+            />
+          </FormControl>
+        </div>
+        <div>
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Text Field
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type="text"
+              endAdornment={
+                <InputAdornment position="end">
+                  <AccountCircle />
+                </InputAdornment>
+              }
+              label="Password"
+            />
+          </FormControl>
+        </div>
       </div>
     </div>
   );
