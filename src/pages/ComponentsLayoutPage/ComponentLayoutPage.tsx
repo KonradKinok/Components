@@ -62,6 +62,11 @@ const ComponentsLayoutPage = () => {
           className={({ isActive }) => (isActive ? scss.active : "")}>
           MUI
         </NavLink>
+        <NavLink
+          to="fuse-page"
+          className={({ isActive }) => (isActive ? scss.active : "")}>
+          Fuse
+        </NavLink>
       </nav>
       <div className={scss["main"]}>
         <Suspense fallback={<div>Loading page...</div>}>

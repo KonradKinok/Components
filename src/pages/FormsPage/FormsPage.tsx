@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Formik } from "formik";
 import scss from "./FormsPage.module.scss";
 import canCreateWords from "../KrzyzowkaPage/KrzyzowkaPage";
@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import customTheme from "./customTheme";
 import AbcOutlinedIcon from "@mui/icons-material/AbcOutlined";
 import FontDownloadOutlinedIcon from "@mui/icons-material/FontDownloadOutlined";
+import { SingleInput } from "./SimpleInput/SimpleInput";
+import { FaUser } from "react-icons/fa";
 
 interface FormValues {
   email: string;
@@ -22,6 +24,29 @@ interface FormValues {
 }
 
 export default function FormsPage() {
+  //SingleInputData
+  const [singleInputValue, setSingleInputValue] = useState<string>("");
+  const [singleInputError, setSingleInputError] = useState<string>("");
+
+  const handleSingleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const currentValue = event.target.value;
+
+    let errorTextInput = "";
+    if (event.target.name === "firstSingleInputName") {
+      setSingleInputValue(currentValue);
+      if (currentValue.length === 1) {
+        errorTextInput = "Za mało liter";
+      } else if (!currentValue) {
+        errorTextInput = "Musisz wypełnić te pole";
+      }
+      setSingleInputError(errorTextInput);
+    }
+  };
+
+  //-----------------SingleInputData
+
   const [textInInput, setTextInInput] = useState("");
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextInInput(event.target.value);
@@ -198,6 +223,22 @@ export default function FormsPage() {
             }}
           />
         </ThemeProvider>
+      </div>
+      <div>
+        <p>Single Input</p>
+        <SingleInput
+          inputName="firstSingleInputName"
+          singleInputValue={singleInputValue}
+          setSingleInputValue={setSingleInputValue}
+          handleSingleInputChange={handleSingleInputChange}
+          inputPlaceholder="Enter your text"
+          iconLeft={<FaUser size={16} />}
+          singleInputError={singleInputError}
+          required={false}
+          classNameInputContainer={scss["custom-input-container"]}
+        />
+        <p>Wartość inputa: {singleInputValue}</p>
+        <p>Wartość inputa: {singleInputValue.length}</p>
       </div>
     </div>
   );

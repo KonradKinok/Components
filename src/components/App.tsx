@@ -18,6 +18,11 @@ const ComboBoxPage = lazy(() => import("../pages/ComboBoxPage/ComboBoxPage"));
 const ButtonPage = lazy(() => import("../pages/ButtonPage/ButtonPage"));
 const VideoPage = lazy(() => import("../pages/VideoPage/VideoPage"));
 const FormsPage = lazy(() => import("../pages/FormsPage/FormsPage"));
+const FusePage = lazy(() =>
+  import("../pages/FusePage/FusePage").then((module) => ({
+    default: module.FusePage,
+  })),
+);
 // Others
 const OthersLayoutPage = lazy(
   () => import("../pages/OthersLayoutPage/OthersLayoutPage"),
@@ -41,6 +46,7 @@ const MuiTextField = lazy(() =>
     default: module.MuiTextField,
   })),
 );
+
 export const App: React.FC = () => {
   return (
     <Routes>
@@ -57,6 +63,7 @@ export const App: React.FC = () => {
           <Route path="button" element={<ButtonPage />} />
           <Route path="video" element={<VideoPage />} />
           <Route path="forms" element={<FormsPage />} />
+          <Route path="fuse-page" element={<FusePage />} />
           <Route path="mui-layout-page" element={<MuiLayoutPage />}>
             {/* <Route path="mui-home-page" element={<MuiHome />} /> */}
             <Route index element={<MuiHome />} />

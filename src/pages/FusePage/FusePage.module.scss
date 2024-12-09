@@ -1,0 +1,27 @@
+.container-fuse-page {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.fuse-page-form {
+  position: relative;
+  background-color: yellow;
+
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 15px;
+
+  .custom-input-container {
+
+    --color-background: yellow !important;
+  }
+
+}
