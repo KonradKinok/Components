@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import customTheme from "./customTheme";
 import AbcOutlinedIcon from "@mui/icons-material/AbcOutlined";
 import FontDownloadOutlinedIcon from "@mui/icons-material/FontDownloadOutlined";
-import { SingleInput } from "./SimpleInput/SimpleInput";
+import { SingleInput, SingleInputB } from "./SimpleInput/SimpleInput";
 import { FaUser } from "react-icons/fa";
 
 interface FormValues {
@@ -27,14 +27,17 @@ export default function FormsPage() {
   //SingleInputData
   const [singleInputValue, setSingleInputValue] = useState<string>("");
   const [singleInputError, setSingleInputError] = useState<string>("");
+  const [singleInputValueB, setSingleInputValueB] = useState<string>("");
+  const [singleInputErrorB, setSingleInputErrorB] = useState<string>("");
 
   const handleSingleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const currentValue = event.target.value;
-
+    const currentName = event.target.name;
     let errorTextInput = "";
-    if (event.target.name === "firstSingleInputName") {
+
+    if (currentName === "firstSingleInputName") {
       setSingleInputValue(currentValue);
       if (currentValue.length === 1) {
         errorTextInput = "Za mało liter";
@@ -44,7 +47,16 @@ export default function FormsPage() {
       setSingleInputError(errorTextInput);
     }
   };
-
+  //SingleInputDataB
+  useEffect(() => {
+    let errorTextInput = "";
+    if (singleInputValueB.length === 1) {
+      errorTextInput = "Za mało liter";
+    } else if (!singleInputValueB) {
+      errorTextInput = "Musisz wypełnić te pole";
+    }
+    setSingleInputErrorB(errorTextInput);
+  }, [singleInputValueB]);
   //-----------------SingleInputData
 
   const [textInInput, setTextInInput] = useState("");
@@ -229,7 +241,7 @@ export default function FormsPage() {
         <SingleInput
           inputName="firstSingleInputName"
           singleInputValue={singleInputValue}
-          setSingleInputValue={setSingleInputValue}
+          // setSingleInputValue={setSingleInputValue}
           handleSingleInputChange={handleSingleInputChange}
           inputPlaceholder="Enter your text"
           iconLeft={<FaUser size={16} />}
@@ -239,6 +251,23 @@ export default function FormsPage() {
         />
         <p>Wartość inputa: {singleInputValue}</p>
         <p>Wartość inputa: {singleInputValue.length}</p>
+      </div>
+      <div>
+        <p>Single Input B</p>
+        <SingleInputB
+          inputName="firstSingleInputNameB"
+          singleInputValue={singleInputValueB}
+          setSingleInputValue={setSingleInputValueB}
+          // handleSingleInputChange={handleSingleInputChange}
+          inputPlaceholder="firstSingleInputNameB"
+          iconLeft={<FaUser size={16} />}
+          singleInputError={singleInputErrorB}
+          // setSingleInputError={setSingleInputError}
+          required={false}
+          classNameInputContainer={scss["custom-input-container"]}
+        />
+        <p>Wartość inputa: </p>
+        <p>Wartość inputa: </p>
       </div>
     </div>
   );

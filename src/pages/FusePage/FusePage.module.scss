@@ -24,4 +24,46 @@
     --color-background: yellow !important;
   }
 
+
+
+}
+
+.container-numbered-list {
+  color: white;
+
+  ul {
+    counter-increment: numbered;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+
+  }
+
+  ul::before {
+    content: counter(numbered);
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    background-color: blueviolet;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.5rem;
+  }
+}
+
+.container-unnumbered-list {
+
+  li::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+    background-image: url("../../images/picture-svgrepo-com.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
