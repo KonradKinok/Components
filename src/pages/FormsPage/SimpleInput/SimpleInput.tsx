@@ -80,6 +80,7 @@ export const SingleInput: React.FC<SingleInputInterface> = ({
   );
 };
 
+
 //  //SingleInputDataInParentComponent
 //   const [singleInputValue, setSingleInputValue] = useState<string>("");
 //   const [singleInputError, setSingleInputError] = useState<string>("");
