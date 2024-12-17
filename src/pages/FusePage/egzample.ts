@@ -23,7 +23,7 @@ export const fuseOptions = {
 export const fuseOptionsContacts = {
 	// isCaseSensitive: false,
 	includeScore: true,
-	// shouldSort: true,
+	shouldSort: true,
 	includeMatches: true,
 	// findAllMatches: true,
 	minMatchCharLength: 1,

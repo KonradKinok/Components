@@ -58,9 +58,13 @@ export const FusePage = () => {
   }, [searchInputValue]);
 
   useEffect(() => {
-    const temp = searchFuse(searchContactsValue, contacts, fuseOptionsContacts);
-    setFindedContactsTable(temp);
-    console.log({ temp });
+    const searchContactsTable = searchFuse(
+      searchContactsValue,
+      contacts,
+      fuseOptionsContacts,
+    );
+    setFindedContactsTable(searchContactsTable);
+    console.log({ temp: searchContactsTable });
   }, [searchContactsValue]);
 
   return (

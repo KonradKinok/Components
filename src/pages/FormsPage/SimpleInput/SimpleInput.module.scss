@@ -17,7 +17,8 @@
 
   line-height: 1.4;
   font-family: 'Inter', sans-serif;
-  font-size: calc(.6rem + .5vw);
+  // font-size: calc(.6rem + .5vw);
+  font-size: 16px;
   color: var(--color-text);
   background: var(--color-background);
   font-weight: 300;
@@ -53,7 +54,7 @@
       background: var(--color-background);
       transition: transform 150ms ease-in;
       font-weight: bold;
-      line-height: 1.2;
+      line-height: 1.0;
       opacity: 0.8;
     }
 
