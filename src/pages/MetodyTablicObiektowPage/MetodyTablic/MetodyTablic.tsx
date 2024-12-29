@@ -8,6 +8,7 @@ import {
   type Users,
   users,
 } from "../db/contactsTableSource";
+import { dividerClasses } from "@mui/material";
 export const MetodyTablic = () => {
   const [przyklad1, setPrzyklad1] = useState(funkcjaPrzyklad1(planets));
   const przyklad2 = funkcjaPrzyklad2(books);
@@ -99,15 +100,21 @@ function funkcjaPrzyklad4(users: Users[]) {
   return emails;
 }
 
+//MetodyTablicFilter
 const numbers = [17, 24, 82, 61, 36, 18, 47, 52, 73];
-export const MetodyTablicFind = () => {
-  const przyklad1a = funkcjaFindPrzyklad1a(numbers);
-  const przyklad1b = funkcjaFindPrzyklad1b(numbers);
-
+const MIN_RATING = 8;
+const AUTHOR = "Bernard Cornwell";
+export const MetodyTablicFilter = () => {
+  const przyklad1a = funkcjaFilterPrzyklad1a(numbers);
+  const przyklad1b = funkcjaFilterPrzyklad1b(numbers);
+  const przyklad2a = funkcjaFilterPrzyklad2a(books, MIN_RATING);
+  const przyklad2b = funkcjaFilterPrzyklad2b(books, AUTHOR);
+  const przyklad3 = funkcjaFilterPrzyklad3(users, "blue");
+  const przyklad4 = funkcjaFilterPrzyklad4(users, 20, 30);
   return (
     <div>
       <div>
-        <h3>Przykład 1 .find:</h3>
+        <h3>Przykład 1 .filter:</h3>
         <p>
           Dopełnij kod tak, aby zmienna evenNumbers zawierała tablicę liczb
           parzystych z tablicy numbers, a zmienna oddNumbers zawierała tablicę
@@ -121,16 +128,184 @@ export const MetodyTablicFind = () => {
         <p>Wynik: [{przyklad1b.join(", ")}]</p>
         <p>Wartością zmiennej oddNumbers jest tablica [17, 61, 47, 73]</p>
       </div>
+      <div>
+        <h3>Przykład 2 .filter:</h3>
+        <p>
+          Tablica books zawiera kolekcję obiektów książek, z których każdy
+          zawiera właściwości title, author, rating. Używając metody filter(),
+          dopełnij kod tak, aby: W zmiennej topRatedBooks znalazła się tablica
+          książek, których ocena (właściwość rating) jest większa lub równa
+          wartości zmiennej MIN_RATING. W zmiennej booksByAuthor znalazła się
+          tablica książek napisanych przez autora o nazwisku (właściwość author)
+          pasującym do wartości w zmiennej AUTHOR.
+        </p>
+        <p>{`const topRatedBooks = books.filter((book) => book.rating > minRating);`}</p>
+        <p>Wynik: {przyklad2a.join(", ")}</p>
+        <p>
+          Wartość zmiennej topRatedBooks jest tablicą książek z ratingiem
+          powyżej 8
+        </p>
+        <p>{`booksByAuthor = books.filter((book) => book.author == author);`}</p>
+        <p>Wynik: {przyklad2b.join(", ")}</p>
+        <p>
+          Wartością zmiennej booksByAuthor jest tablica książek, których autorem
+          jest "Bernard Cornwell"
+        </p>
+      </div>
+      <div>
+        <h3>Przykład 3 .filter:</h3>
+        <p>
+          Dopełnij funkcję getUsersWithEyeColor(users, color) tak, aby zwracała
+          tablicę użytkowników, których kolor oczu (właściwość eyeColour) zgadza
+          się z wartością drugiego parametru colour.
+        </p>
+        <p>{`const getUsersWithEyeColor = users.filter((user) => user.eyeColor == color);`}</p>
+        <p>Wynik: {przyklad3.join(", ")}</p>
+        <p>
+          Jeśli parametr color to blue, funkcja zwraca tablicę obiektów
+          użytkowników o nazwach Moore Hensley, Sharlene Bush i Carey Barr
+        </p>
+      </div>
+      <div>
+        <h3>Przykład 4 .filter:</h3>
+        <p>
+          Dopełnij kodu do funkcji getUsersWithAge(users, minAge, maxAge), aby
+          zwrócić tablicę użytkowników, których wiek (przechowywany we
+          właściwości age) należy do określonego zakresu od minAge do maxAge.
+        </p>
+        <p>{`const getUsersWithAge = users.filter(
+    (user) => user.age >= minAge && user.age <= maxAge,
+  );`}</p>
+        <p>Wynik: {przyklad4.join(", ")}</p>
+        <p>
+          Jeśli wartości parametrów minAge i maxAge wynoszą odpowiednio 20 i 30,
+          funkcja zwraca tablicę obiektów użytkowników o nazwach Ross Vazquez,
+          Elma Head, Carey Barr
+        </p>
+      </div>
     </div>
   );
 };
 
-function funkcjaFindPrzyklad1a(numbers: number[]) {
+function funkcjaFilterPrzyklad1a(numbers: number[]) {
   const evenNumbers = numbers.filter((number) => number % 2 === 0);
   return evenNumbers;
 }
 
-function funkcjaFindPrzyklad1b(numbers: number[]) {
+function funkcjaFilterPrzyklad1b(numbers: number[]) {
   const oddNumbers = numbers.filter((number) => number % 2 !== 0);
   return oddNumbers;
 }
+
+function funkcjaFilterPrzyklad2a(books: Books[], minRating: number) {
+  const topRatedBooks = books.filter((book) => book.rating > minRating);
+  return topRatedBooks.map((book) => `${book.title} (${book.rating})`);
+}
+function funkcjaFilterPrzyklad2b(books: Books[], author: string) {
+  const booksByAuthor = books.filter((book) => book.author == author);
+  return booksByAuthor.map((book) => `${book.title} (${book.author})`);
+}
+
+function funkcjaFilterPrzyklad3(users: Users[], color: string) {
+  const getUsersWithEyeColor = users.filter((user) => user.eyeColor == color);
+  return getUsersWithEyeColor.map((user) => `${user.name} (${user.eyeColor})`);
+}
+
+function funkcjaFilterPrzyklad4(
+  users: Users[],
+  minAge: number,
+  maxAge: number,
+) {
+  const getUsersWithAge = users.filter(
+    (user) => user.age >= minAge && user.age <= maxAge,
+  );
+  return getUsersWithAge.map((user) => `${user.name} (${user.age})`);
+}
+
+//MetodyTablicFind
+
+export const MetodyTablicFind = () => {
+  const BOOK_TITLE = "The Dream of a Ridiculous Man";
+  const AUTHOR = "Robert Sheckley";
+
+  const przyklad1a = funkcjaFindPrzyklad1a(books, BOOK_TITLE);
+  const przyklad1b = funkcjaFindPrzyklad1b(books, AUTHOR);
+  const przyklad2 = funkcjaFindPrzyklad2(users, "shereeanthony@kog.com");
+  return (
+    <div>
+      <div>
+        <h3>Przykład 1 .find:</h3>
+        <p>
+          Używając metody find(), dopełnij kod tak, aby: W zmiennej
+          bookWithTitle został utworzony obiekt książki, której nazwa
+          (właściwość title) odpowiada wartości zmiennej BOOK_TITLE. W zmiennej
+          bookByAuthor został utworzony obiekt książki, którego autor
+          (właściwość author) odpowiada wartości zmiennej AUTHOR.
+        </p>
+        <p>{`const bookWithTitle = books.find((book) => book.title === bookTitle);`}</p>
+        <p>Wynik: {przyklad1a}</p>
+        <p>
+          Wartością zmiennej bookWithTitle jest obiekt książki o nazwie "The
+          Dream of a Ridiculous Man"
+        </p>
+        <p>{`const bookByAuthor = books.find((book) => book.author === author);`}</p>
+        <p>Wynik: {przyklad1b}</p>
+        <p>
+          Wartością zmiennej bookByAuthor jest obiekt książki autora "Robert
+          Sheckley"
+        </p>
+      </div>
+      <div>
+        <h3>Przykład 2 .find:</h3>
+        <p>
+          Dopełnij funkcję getUserWithEmail(users, email) tak, aby zwracała
+          obiekt użytkownika, którego email (właściwość email) zgadza się z
+          wartością drugiego parametru email.
+        </p>
+        <p>{`const getUserWithEmail = users.find((user) => user.email === email);`}</p>
+        <p>Wynik: {przyklad2}</p>
+        <p>
+          Jeśli wartością parametru email jest "shereeanthony@kog.com", funkcja
+          zwraca obiekt użytkownika o nazwie Sheree Anthony
+        </p>
+      </div>
+    </div>
+  );
+};
+
+function funkcjaFindPrzyklad1a(books: Books[], bookTitle: string) {
+  const bookWithTitle = books.find((book) => book.title === bookTitle);
+  return bookWithTitle ? `${bookWithTitle.title}` : undefined;
+}
+function funkcjaFindPrzyklad1b(books: Books[], author: string) {
+  const bookByAuthor = books.find((book) => book.author === author);
+  return bookByAuthor ? `${bookByAuthor.author}` : undefined;
+}
+
+function funkcjaFindPrzyklad2(users: Users[], email: string) {
+  const getUserWithEmail = users.find((user) => user.email === email);
+  return getUserWithEmail
+    ? `${getUserWithEmail.name} (${getUserWithEmail.email})`
+    : undefined;
+}
+
+export const MetodyTablicEvery = () => {
+  return (
+    <div>
+      <div>
+        <h3>Przykład 1 .every:</h3>
+        <p>
+          Dopełnij funkcję getUserWithEmail(users, email) tak, aby zwracała
+          obiekt użytkownika, którego email (właściwość email) zgadza się z
+          wartością drugiego parametru email.
+        </p>
+        <p>{`const getUserWithEmail = users.find((user) => user.email === email);`}</p>
+        <p>Wynik: {przyklad2}</p>
+        <p>
+          Jeśli wartością parametru email jest "shereeanthony@kog.com", funkcja
+          zwraca obiekt użytkownika o nazwie Sheree Anthony
+        </p>
+      </div>
+    </div>
+  );
+};

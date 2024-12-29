@@ -3,7 +3,12 @@ import {
   type ContactsTableSource,
   contactsTableSource,
 } from "./db/contactsTableSource";
-import { MetodyTablic, MetodyTablicFind } from "./MetodyTablic/MetodyTablic";
+import {
+  MetodyTablic,
+  MetodyTablicFilter,
+  MetodyTablicFind,
+  MetodyTablicEvery,
+} from "./MetodyTablic/MetodyTablic";
 import { SingleInput } from "../FormsPage/SimpleInput/SimpleInput";
 import scss from "./MetodyTablicObiektowPage.module.scss";
 export const MetodyTablicObiektowPage = () => {
@@ -42,7 +47,7 @@ export const MetodyTablicObiektowPage = () => {
     "%cMetodyTablicObiektowPage - start",
     "color: green; font-weight: bold;",
   );
-  console.table(mainDataTable);
+
   return (
     <div className={scss["metodyTablicObiektowPage-mainContainer"]}>
       <h1>Metody tablic i obiektów</h1>
@@ -124,7 +129,46 @@ console.log(positiveValues); // [51, 27, 21, 42]
             );
           })}
         </ul>
+        <MetodyTablicFilter />
+      </div>
+      <div className={scss[""]}>
+        <hr className={`${scss["hr"]}`} data-label="mainDataTable.find" />
+        <p>{`array.find((element, index, array) => {
+  // Ciało funkcji wywołania zwrotnego
+});`}</p>
+        <p>
+          Metoda find(callback) pozwala znaleźć i zwrócić pierwszy pasujący
+          element, który spełnia warunek, po czym iteracja jest zatrzymywana.
+          Oznacza to, że w przeciwieństwie do metody filter(callback),
+          przeszukuje ona do pierwszego dopasowania.
+        </p>
         <MetodyTablicFind />
+      </div>
+      <div className={scss[""]}>
+        <hr className={`${scss["hr"]}`} data-label="mainDataTable.every" />
+        <p>{`array.every((element, index, array) => {
+  // Ciało funkcji wywołania zwrotnego
+});`}</p>
+        <p>{`// Czy wszystkie elementy są większe lub równe zero? - tak
+[1, 2, 3, 4, 5].every((value) => value >= 0); // true
+`}</p>
+        <p>{`// Czy wszystkie elementy są większe lub równe zero? - nie
+[1, 2, 3, -10, 4, 5].every((value) => value >= 0); // false`}</p>
+        <p>
+          <p>{`const products = [
+	{ name: "apple", quantity: 2 },
+	{ name: "orange", quantity: 5 },
+	{ name: "plum", quantity: 0 },
+];
+
+const hasEveryProduct = products.every(product => product.quantity > 0);
+console.log(hasEveryProduct); // false`}</p>
+          <p>
+            Metoda every(callback) sprawdza, czy wszystkie elementy spełniają
+            warunek funkcji wywołania zwrotnego.
+          </p>
+        </p>
+        <MetodyTablicEvery />
       </div>
     </div>
   );
