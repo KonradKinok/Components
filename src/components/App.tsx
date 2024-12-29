@@ -30,6 +30,14 @@ const OthersLayoutPage = lazy(
 const KrzyzowkaPage = lazy(
   () => import("../pages/KrzyzowkaPage/KrzyzowkaPage"),
 );
+
+const MetodyTablicObiektowPage = lazy(() =>
+  import("../pages/MetodyTablicObiektowPage/MetodyTablicObiektowPage").then(
+    (module) => ({
+      default: module.MetodyTablicObiektowPage,
+    }),
+  ),
+);
 // MUI:
 const MuiLayoutPage = lazy(() =>
   import("../pages/MuiPage/MuiLayoutPage/MuiLayoutPage").then((module) => ({
@@ -72,6 +80,10 @@ export const App: React.FC = () => {
         </Route>
         <Route path="others" element={<OthersLayoutPage />}>
           <Route path="krzyzowka" element={<KrzyzowkaPage />} />
+          <Route
+            path="MetodyTablicObiektowPage"
+            element={<MetodyTablicObiektowPage />}
+          />
         </Route>
       </Route>
     </Routes>

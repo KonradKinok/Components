@@ -11,6 +11,11 @@ export default function OthersLayoutPage() {
           className={({ isActive }) => (isActive ? scss.active : "")}>
           Krzyżówka
         </NavLink>
+        <NavLink
+          to="MetodyTablicObiektowPage"
+          className={({ isActive }) => (isActive ? scss.active : "")}>
+          Metody tablic i obiektów
+        </NavLink>
       </nav>
       <div className={scss["main-others"]}>
         <Suspense fallback={<div>Loading page...</div>}>
