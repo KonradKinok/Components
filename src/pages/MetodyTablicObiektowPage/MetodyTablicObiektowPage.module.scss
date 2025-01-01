@@ -77,5 +77,11 @@
     width: 450px;
   }
 
+  ol {
+    list-style: decimal inside none;
+  }
 
+  ul {
+    list-style: square inside none;
+  }
 }

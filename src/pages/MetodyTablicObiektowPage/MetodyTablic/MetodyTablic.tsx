@@ -7,8 +7,10 @@ import {
   booksFlatMap,
   type Users,
   users,
+  type Players3,
+  players3,
 } from "../db/contactsTableSource";
-import { dividerClasses } from "@mui/material";
+
 export const MetodyTablic = () => {
   const [przyklad1, setPrzyklad1] = useState(funkcjaPrzyklad1(planets));
   const przyklad2 = funkcjaPrzyklad2(books);
@@ -289,23 +291,231 @@ function funkcjaFindPrzyklad2(users: Users[], email: string) {
     : undefined;
 }
 
+//MetodyTablicFEvery
 export const MetodyTablicEvery = () => {
+  const przyklad1 = funkcjaEveryPrzyklad1(users);
   return (
     <div>
       <div>
         <h3>Przykład 1 .every:</h3>
         <p>
-          Dopełnij funkcję getUserWithEmail(users, email) tak, aby zwracała
-          obiekt użytkownika, którego email (właściwość email) zgadza się z
-          wartością drugiego parametru email.
+          Dopełnij funkcję isEveryUserActive(users) tak, aby sprawdzała, czy
+          wszyscy użytkownicy są teraz aktywni (właściwość isActive) i zwracała
+          true lub false.
         </p>
-        <p>{`const getUserWithEmail = users.find((user) => user.email === email);`}</p>
-        <p>Wynik: {przyklad2}</p>
-        <p>
-          Jeśli wartością parametru email jest "shereeanthony@kog.com", funkcja
-          zwraca obiekt użytkownika o nazwie Sheree Anthony
-        </p>
+        <p>{`const isEveryUserActive = users.every((user) => user.isActive === true);`}</p>
+        <p>Wynik: {przyklad1 ? "prawda" : "fałsz"}</p>
+        <p>Wynik: {przyklad1.toString()}</p>
+        <p>Wynik: {`${przyklad1}`}</p>
+        <p>Wywołanie funkcji z określoną tablicą użytkowników zwraca false</p>
       </div>
     </div>
   );
+};
+
+function funkcjaEveryPrzyklad1(users: Users[]) {
+  const isEveryUserActive = users.every((user) => user.isActive === true);
+  return isEveryUserActive;
+}
+
+//MetodyTablicSome
+export const MetodyTablicSome = () => {
+  const przyklad1 = funkcjaSomePrzyklad1(users);
+  return (
+    <div>
+      <div>
+        <h3>Przykład 1 .some:</h3>
+        <p>
+          Dopełnij funkcję isAnyUserActive(users) tak, aby sprawdzała obecność
+          przynajmniej jednego aktywnego użytkownika (właściwość isActive) i
+          zwracała true lub false.
+        </p>
+        <p>{`const isEveryUserActive = users.some((user) => user.isActive === true`}</p>
+        <p>Wynik: {przyklad1 ? "prawda" : "fałsz"}</p>
+        <p>Wynik: {przyklad1.toString()}</p>
+        <p>Wynik: {`${przyklad1}`}</p>
+        <p>Wywołanie funkcji z określoną tablicą użytkowników zwraca true</p>
+      </div>
+    </div>
+  );
+};
+
+function funkcjaSomePrzyklad1(users: Users[]) {
+  const isEveryUserActive = users.some((user) => user.isActive === true);
+  return isEveryUserActive;
+}
+
+//MetodyTablicReduce
+interface Players {
+  [key: string]: number;
+}
+const players: Players = {
+  mango: 1270,
+  poly: 468,
+  ajax: 710,
+  kiwi: 244,
+};
+export const MetodyTablicReduce = () => {
+  const przyklad1 = funkcjaReducePrzyklad1(players);
+  const przyklad2 = funkcjaReducePrzyklad2(users);
+  const przyklad3 = funkcjaReducePrzyklad3(players3);
+  const keys = Object.keys(players);
+  const keysUsers = users.map((user) => Object.keys(user));
+  return (
+    <div>
+      <div>
+        <h3>Przykład 1 .reduce:</h3>
+        <p>
+          Serwis gamingowy potrzebuje funkcjonalności do obliczania średniego
+          czasu spędzonego w grach przez jednego gracza. Zmienna players
+          przechowuje obiekt, w którym kluczem jest nazwisko gracza, a wartością
+          jego czas gry. Zmienna playtimes przechowuje tablicę wartości obiektu
+          players, czyli tablicę czasu gry wszystkich graczy. Wartością zmiennej
+          averagePlayTime będzie średni czas spędzony przez jednego gracza w
+          grach.
+        </p>
+        <p>
+          {`const players = {
+            mango: 1270,
+            poly: 468,
+            ajax: 710,
+            kiwi: 244,
+          };`}
+        </p>
+        <p>{`const players = {`}</p>
+        <ul>
+          {keys.map((key) => (
+            <li key={key}>{`${key}: ${players[key]}`}</li>
+          ))}
+        </ul>
+        <p>{`};`}</p>
+        <p>
+          Dopełnij kod tak, aby zmienna totalPlayTime zawierała całkowity czas
+          gry z tablicy playtimes. Należy użyć metody reduce().
+        </p>
+        <p>{`const values = Object.values(players); // [1270, 468, 710, 244]
+  const totalPlayTime = values.reduce((previousValue, number) => {
+    return previousValue + number;
+  }, 0);`}</p>
+        <p>Wynik: {przyklad1 ? "prawda" : "fałsz"}</p>
+        <p>Wynik: {przyklad1.toString()}</p>
+        <p>Wynik: {`${przyklad1}`}</p>
+        <p>{keys.join(", ")}</p>
+        <p>Wartością zmiennej totalPlayTime jest liczba 2692</p>
+      </div>
+      <div>
+        <h3>Przykład 2 .reduce:</h3>
+        <p>
+          Dopełnij funkcję calculateTotalBalance(users) tak, aby obliczała i
+          zwracała sumę wszystkich środków (właściwość balance), które są
+          przechowywane przez użytkowników z tablicy users.
+        </p>
+        <p>
+          Dopełnij kod tak, aby zmienna totalPlayTime zawierała całkowity czas
+          gry z tablicy playtimes. Należy użyć metody reduce().
+        </p>
+        <p>{`const isEveryUserActive = users.some((user) => user.isActive === true`}</p>
+        <p>Wynik: {przyklad1 ? "prawda" : "fałsz"}</p>
+        <p>Wynik: {przyklad1.toString()}</p>
+        <p>Wynik: {`${przyklad1}`}</p>
+        <p>{keysUsers.join(", ")}</p>
+        <ul>
+          {users.map((user, index) => {
+            return Object.entries(user).map(([key, value]) => {
+              if (key === "balance") {
+                return (
+                  <li key={`${user.name}-${key}`}>
+                    <strong>{`User ${index + 1}`}</strong>
+                    <strong>{key}</strong>:{" "}
+                    {Array.isArray(value) ? value.join(", ") : value.toString()}
+                  </li>
+                );
+              }
+            });
+          })}
+        </ul>
+        <ul>
+          {users.map((user, index) =>
+            Object.entries(user)
+              .filter(([key]) => key === "balance") // Filtrujemy tylko te, które mają klucz "balance"
+              .map(([key, value]) => (
+                <li key={key}>
+                  {`User ${index + 1}`} <strong>{key}</strong>:{" "}
+                  {Array.isArray(value) ? value.join(", ") : value.toString()}
+                </li>
+              )),
+          )}
+        </ul>
+        <ul>
+          {users.map((user, index) =>
+            Object.entries(user).map(([key, value]) =>
+              key === "balance" ? (
+                <li key={key}>
+                  {`User ${index + 1}`} <strong>{key}</strong>:{" "}
+                  {Array.isArray(value) ? value.join(", ") : value.toString()}
+                </li>
+              ) : null,
+            ),
+          )}
+        </ul>
+        <p>Wynik: {przyklad2 ? "prawda" : "fałsz"}</p>
+        <p>Wynik: {przyklad2.toString()}</p>
+        <p>Wynik: {`${przyklad2}`}</p>
+        <p>
+          Wywołanie funkcji z określoną tablicą użytkowników zwraca liczbę 20916
+        </p>
+      </div>
+      <div>
+        <h3>Przykład 3 .reduce:</h3>
+        <p>
+          Zmienna players przechowuje tablicę obiektów, z których każdy posiada
+          właściwości name, playtime i gamesPlayed. Nasz serwis musi obliczyć
+          średni czas spędzony w jednej grze dla każdego gracza i uzyskać
+          całkowitą sumę tych wartości czasu w zmiennej
+          totalAveragePlaytimePerGame. Można obliczyć czas dla każdego gracza,
+          dzieląc jego czas (właściwość playtime) przez liczbę gier (właściwość
+          gamesPlayed).
+        </p>
+        <p>
+          Dopełnij kod tak, aby zmienna totalPlayTime zawierała całkowity czas
+          gry z tablicy playtimes. Należy użyć metody reduce().
+        </p>
+        <p>{`const values = Object.values(players); // [1270, 468, 710, 244]
+  const totalPlayTime = values.reduce((previousValue, number) => {
+    return previousValue + number;
+  }, 0);`}</p>
+        <p>Wynik: {przyklad3 ? "prawda" : "fałsz"}</p>
+        <p>Wynik: {przyklad3.toString()}</p>
+        <p>Wynik: {`${przyklad3}`}</p>
+
+        <p>Wartością zmiennej totalAveragePlaytimePerGame jest liczba 1023</p>
+      </div>
+    </div>
+  );
+};
+
+function funkcjaReducePrzyklad1(players: Players) {
+  const values = Object.values(players); // Pobieramy wartości z obiektu
+  const totalPlayTime = values.reduce((previousValue, number) => {
+    return previousValue + number;
+  }, 0);
+  return totalPlayTime;
+}
+
+function funkcjaReducePrzyklad2(users: Users[]) {
+  const totalScore = users.reduce((total, user) => {
+    return total + user.balance;
+  }, 0);
+  return totalScore;
+}
+
+function funkcjaReducePrzyklad3(players3: Players3[]) {
+  const totalAveragePlaytimePerGame = players3.reduce((total, player) => {
+    return total + player.playtime / player.gamesPlayed;
+  }, 0);
+  return totalAveragePlaytimePerGame;
+}
+
+export const MetodyTablicToSort = () => {
+  return <div></div>;
 };

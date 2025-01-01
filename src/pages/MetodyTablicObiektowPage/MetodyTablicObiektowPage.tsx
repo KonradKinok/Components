@@ -8,6 +8,9 @@ import {
   MetodyTablicFilter,
   MetodyTablicFind,
   MetodyTablicEvery,
+  MetodyTablicSome,
+  MetodyTablicReduce,
+  MetodyTablicToSort,
 } from "./MetodyTablic/MetodyTablic";
 import { SingleInput } from "../FormsPage/SimpleInput/SimpleInput";
 import scss from "./MetodyTablicObiektowPage.module.scss";
@@ -78,6 +81,7 @@ export const MetodyTablicObiektowPage = () => {
             const randomColor = getRandomColorRgba(); // Deklarujemy zmienną tutaj
             const contactName =
               contact.name === "Reuben Henry" ? "📀REUBEN HENRY" : contact.name;
+
             return (
               <li
                 key={contact.id}
@@ -146,6 +150,15 @@ console.log(positiveValues); // [51, 27, 21, 42]
       </div>
       <div className={scss[""]}>
         <hr className={`${scss["hr"]}`} data-label="mainDataTable.every" />
+        <p>
+          Metoda every(callback) sprawdza, czy wszystkie elementy spełniają
+          warunek funkcji wywołania zwrotnego.
+        </p>
+        <p>Zwraca true, jeśli wszystkie elementy tablicy spełniają warunek</p>
+        <p>
+          Zwraca false, jeśli przynajmniej jeden element tablicy nie spełnia
+          warunku.
+        </p>
         <p>{`array.every((element, index, array) => {
   // Ciało funkcji wywołania zwrotnego
 });`}</p>
@@ -154,8 +167,8 @@ console.log(positiveValues); // [51, 27, 21, 42]
 `}</p>
         <p>{`// Czy wszystkie elementy są większe lub równe zero? - nie
 [1, 2, 3, -10, 4, 5].every((value) => value >= 0); // false`}</p>
-        <p>
-          <p>{`const products = [
+
+        <p>{`const products = [
 	{ name: "apple", quantity: 2 },
 	{ name: "orange", quantity: 5 },
 	{ name: "plum", quantity: 0 },
@@ -163,12 +176,147 @@ console.log(positiveValues); // [51, 27, 21, 42]
 
 const hasEveryProduct = products.every(product => product.quantity > 0);
 console.log(hasEveryProduct); // false`}</p>
-          <p>
-            Metoda every(callback) sprawdza, czy wszystkie elementy spełniają
-            warunek funkcji wywołania zwrotnego.
-          </p>
+        <p>
+          Metoda every(callback) sprawdza, czy wszystkie elementy spełniają
+          warunek funkcji wywołania zwrotnego.
         </p>
+
         <MetodyTablicEvery />
+      </div>
+      <div className={scss[""]}>
+        <hr className={`${scss["hr"]}`} data-label="mainDataTable.some" />
+        <p>
+          Metoda some(callback) sprawdza, czy co najmniej jeden element spełnia
+          warunek funkcji wywołania zwrotnego.
+        </p>
+        <p>
+          Zwraca true, jeśli co najmniej jeden element tablicy spełnia warunek;
+        </p>
+        <p>Zwraca false, jeśli żaden element tablicy nie spełnia warunku;</p>
+        <p>{`array.some((element, index, array) => {
+  // Ciało funkcji wywołania zwrotnego
+});`}</p>
+        <p>{`// Czy co najmniej jeden element jest większy lub równy zero? - tak
+[1, 2, 3, 4, 5].some(value => value >= 0); // true
+`}</p>
+        <p>{`/ Czy jest co najmniej jeden element mniejszy od zera? - nie
+[1, 2, 3, 4, 5].some(value => value < 0); // false`}</p>
+
+        <p>
+          Metoda every(callback) sprawdza, czy wszystkie elementy spełniają
+          warunek funkcji wywołania zwrotnego.
+        </p>
+
+        <MetodyTablicSome />
+      </div>
+      <div className={scss[""]}>
+        <hr className={`${scss["hr"]}`} data-label="mainDataTable.reduce" />
+        <p>
+          Metoda reduce(callback, initialValue) służy do sekwencyjnego
+          przetwarzania każdego elementu tablicy przy jednoczesnym zapisywaniu
+          wyniku pośredniego.
+        </p>
+        <p>
+          Zwraca dowolną wartość (obiekt, tablicę, ciąg znaków, liczbę itp.);
+        </p>
+        <p>
+          Może zastąpić funkcjonalność dowolnej innej metody iteracyjnej
+          tablicy, a nawet ich kombinację.
+        </p>
+        <p>{`array.reduce((previousValue, element, index, array) => {
+  // Ciało funkcji wywołania zwrotnego
+}, initialValue);`}</p>
+        <p>Metoda reduce() oczekuje 2 parametrów:</p>
+        <ul>
+          <li>
+            Pierwszy parametr (wymagany) — to funkcja wywołania zwrotnego, która
+            "przetwarza" każdy element tablicy;
+          </li>
+          <li>
+            Drugi parametr (opcjonalny) — initialValue — początkowa wartość
+            akumulatora.
+          </li>
+        </ul>
+        <p>
+          Funkcja wywołania zwrotnego oczekuje czterech parametrów od parametru
+          reduce. Parametry te, podobnie jak w wywołaniach zwrotnych innych
+          iteratorów tablic, mogą być pominięte, jeśli ich nie potrzebujesz, ale
+          nie możesz naruszyć ich kolejności:
+        </p>
+        <ol>
+          <li>
+            parametr (previousValue) jest akumulatorem, czyli wynikiem
+            pośrednim. Wartość zwrócona przez funkcję zwrotną w bieżącej
+            iteracji będzie wartością tego parametru w następnej iteracji;
+          </li>
+          <li>parametr — bieżący element tablicy;</li>
+          <li>parametr — indeks bieżącej iteracji;</li>
+          <li>parametr — odniesienie do oryginalnej tablicy.</li>
+        </ol>
+        <p>
+          Najłatwiej wyobrazić sobie jego działanie na przykładzie obliczania
+          sumy elementów tablicy.
+        </p>
+        <p>{`/const total = [2, 7, 3].reduce((previousValue, number) => {
+  return previousValue + number;
+}, 0);
+
+console.log(total); // 12
+`}</p>
+        <p>Przyjrzyjmy się bliżej działaniu reduce w powyższym przykładzie:</p>
+        <ul>
+          <li>Początkowa wartość akumulatora wynosi 0;</li>
+          <li>Pierwsza iteracja funkcji zwrotnej 0 + 2 zwróci 2;</li>
+          <li>Druga iteracja funkcji zwrotnej 2 + 7 zwróci 9;</li>
+          <li>Trzecia iteracja funkcji zwrotnej 9 + 3 zwróci 12.</li>
+        </ul>
+        <p>Wynikiem powyższego kodu będzie 12.</p>
+        <p>
+          Oznacza to, że metoda reduce() jest używana, gdy musisz wziąć "wiele"
+          i zredukować je do "jednego". W codziennych zadaniach jej użycie
+          ogranicza się do pracy z liczbami.
+        </p>
+        <MetodyTablicReduce />
+      </div>
+      {/* toSort() */}
+      <div className={scss[""]}>
+        <hr className={`${scss["hr"]}`} data-label="mainDataTable.toSort" />
+        <p>Metoda toSorted() sortuje elementy tablicy.</p>
+        <p>Domyślnie sortuje w porządku rosnącym.</p>
+        <p>
+          Zwraca false, jeśli przynajmniej jeden element tablicy nie spełnia
+          warunku.
+        </p>
+        <p>{`array.toSorted();`}</p>
+        <p>{`const scores = [61, 19, 74, 35, 92, 56];
+const ascendingScores = scores.toSorted();
+
+console.log(scores); // [61, 19, 74, 35, 92, 56]
+console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+`}</p>
+        <p>{`// Czy wszystkie elementy są większe lub równe zero? - nie
+[1, 2, 3, -10, 4, 5].every((value) => value >= 0); // false`}</p>
+
+        <p>
+          {`const products = [
+	{ name: "apple", quantity: 2 },
+	{ name: "orange", quantity: 5 },
+	{ name: "plum", quantity: 0 },
+];
+
+const hasEveryProduct = products.every(product => product.quantity > 0);
+console.log(hasEveryProduct); // false`}
+        </p>
+        <p>
+          Aby określić kolejność sortowania, należy przekazać funkcję zwrotną z
+          dwoma parametrami do metody toSorted(compareFunction). Jest to funkcja
+          porównująca (compare function), a kolejność sortowania zależy od jej
+          wyniku. Metoda toSorted() wywoła ją dla dwóch dowolnych elementów.
+        </p>
+        <p>{`array.toSorted((a, b) => {
+  // Callback function body
+});`}</p>
+        <MetodyTablicToSort />
       </div>
     </div>
   );

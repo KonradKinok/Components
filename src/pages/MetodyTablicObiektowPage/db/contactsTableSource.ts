@@ -226,4 +226,17 @@ export const users:Users[] =
     gender: "female",
     age: 39,
   },
+  ];
+
+export interface Players3{
+  name: string;
+  playtime: number;
+  gamesPlayed: number;
+}
+
+ export const players3:Players3[] = [
+  { name: "Mango", playtime: 1270, gamesPlayed: 4 },
+  { name: "Poly", playtime: 469, gamesPlayed: 2 },
+  { name: "Ajax", playtime: 690, gamesPlayed: 3 },
+  { name: "Kiwi", playtime: 241, gamesPlayed: 1 },
 ];
