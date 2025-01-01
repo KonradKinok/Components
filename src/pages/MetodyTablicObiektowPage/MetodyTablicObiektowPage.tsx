@@ -303,7 +303,6 @@ console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
 	{ name: "orange", quantity: 5 },
 	{ name: "plum", quantity: 0 },
 ];
-
 const hasEveryProduct = products.every(product => product.quantity > 0);
 console.log(hasEveryProduct); // false`}
         </p>
@@ -316,6 +315,63 @@ console.log(hasEveryProduct); // false`}
         <p>{`array.toSorted((a, b) => {
   // Callback function body
 });`}</p>
+        <p>a — pierwszy element do porównania.</p>
+        <p>b — drugi element do porównania.</p>
+        <p>Sortowanie w porządku malejącym</p>
+        <p>
+          Jeśli wywołanie compareFunction(a, b) zwróci jakąkolwiek wartość
+          dodatnią, tj. b jest większe niż a, sortowanie umieści b przed a.
+        </p>
+        <p>{`const scores = [61, 19, 74, 35, 92, 56];
+const descendingScores = scores.toSorted((a, b) => b - a);
+console.log(descendingScores); // [92, 74, 61, 56, 35, 19]`}</p>
+        <p>
+          Aby posortować ciągi w kolejności alfabetycznej, rosnąco lub malejąco,
+          używa się metody ciągów localeCompare().
+        </p>
+        <p>firstString.localeCompare(secondString)</p>
+        <p>
+          Metoda localeCompare() jest wygodna do sortowania ciągów, ponieważ
+          metoda toSorted() oczekuje tych samych wartości od funkcji wywołania
+          zwrotnego.
+        </p>
+        <p>{`const students = ["Jacob", "Artemis", "Solomon", "Adrian", "Kai", "Ganymede"];
+
+const inAlphabetOrder = students.toSorted((a, b) => a.localeCompare(b));
+console.log(inAlphabetOrder); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+
+const inReversedOrder = students.toSorted((a, b) => b.localeCompare(a));
+console.log(inReversedOrder); // [ "Solomon", "Kai", "Jacob", "Ganymede", "Artemis", "Adrian" ]
+`}</p>
+        <p>
+          Podczas pracy z tablicą obiektów sortowanie odbywa się według wartości
+          liczbowej lub ciągowej określonej właściwości. Na przykład, mamy grupę
+          studentów z wynikami testów i musimy posortować tablicę obiektów
+          według trzech różnych scenariuszy:
+        </p>
+        <ul>
+          <li>w porządku rosnącym według liczby punktów,</li>
+          <li>w porządku malejącym według liczby punktów,</li>
+          <li>według nazwiska studenta w porządku alfabetycznym.</li>
+        </ul>
+        <p>{`const students = [
+  { name: "Mango", score: 83 },
+  { name: "Poly", score: 59 },
+  { name: "Ajax", score: 37 },
+  { name: "Kiwi", score: 94 },
+];
+
+const inAscendingScoreOrder = students.toSorted(
+  (firstStudent, secondStudent) => firstStudent.score - secondStudent.score
+);
+
+const inDescendingScoreOrder = students.toSorted(
+  (firstStudent, secondStudent) => secondStudent.score - firstStudent.score
+);
+
+const inAlphabeticalOrder = students.toSorted((firstStudent, secondStudent) =>
+  firstStudent.name.localeCompare(secondStudent.name)
+);`}</p>
         <MetodyTablicToSort />
       </div>
     </div>

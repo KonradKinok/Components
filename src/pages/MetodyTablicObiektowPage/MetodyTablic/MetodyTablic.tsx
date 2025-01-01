@@ -517,5 +517,77 @@ function funkcjaReducePrzyklad3(players3: Players3[]) {
 }
 
 export const MetodyTablicToSort = () => {
-  return <div></div>;
+  const przyklad1a = funkcjaToSortPrzyklad1a(books);
+  return (
+    <div>
+      <div>
+        <h3>Przykład 1 .toSort:</h3>
+        <p>
+          Tablica books zawiera tablicę obiektów książek, z których każdy
+          zawiera właściwości title, author, rating.
+        </p>
+        <p>Dopełnij kod tak, aby:</p>
+        <ul>
+          <li>
+            Zmienna sortedByAuthorName zawierała tablicę książek posortowanych
+            według nazwiska autora w porządku alfabetycznym.
+          </li>
+          <li>
+            Zmienna sortedByReversedAuthorName zawierała tablicę książek
+            posortowanych według nazwiska autora w odwrotnej kolejności
+            alfabetycznej.
+          </li>
+          <li>
+            Zmienna sortedByAscendingRating zawierała tablicę książek
+            posortowanych rosnąco.
+          </li>
+          <li>
+            Zmienna sortedByDescentingRating zawierała tablicę książek
+            posortowanych malejąco.
+          </li>
+        </ul>
+
+        <p>{`const values = Object.values(players); // [1270, 468, 710, 244]
+  const totalPlayTime = values.reduce((previousValue, number) => {
+    return previousValue + number;
+  }, 0);`}</p>
+        <p>Wynik: {przyklad1a ? "prawda" : "fałsz"}</p>
+        <p>Wynik: {przyklad1a.toString()}</p>
+        <p>Wynik: {przyklad1a.join(", ")}</p>
+        <p>Wynik: {typeof przyklad1a}</p>
+        <p>
+          Wynik: {Array.isArray(przyklad1a) ? "Tablica" : "Nie jest tablicą"}
+        </p>
+        <p>
+          Wynik: {przyklad1a instanceof Array ? "Tablica" : "Nie jest tablicą"}
+        </p>
+        <p>Wynik: {JSON.stringify(przyklad1a)}</p>
+        <pre>Wynik: {JSON.stringify(przyklad1a, null, 2)}</pre>
+        <pre>Wynik: {JSON.stringify(books, null, 2)}</pre>
+        <pre>Wynik: {JSON.stringify(books, ["author", "active"], 2)}</pre>
+        <p>Wynik: {`${przyklad1a}`}</p>
+      </div>
+    </div>
+  );
 };
+
+function funkcjaToSortPrzyklad1a(books: Books[]) {
+  const sortedByAuthorName = books.toSorted((firstBook, secondBook) =>
+    firstBook.author.localeCompare(secondBook.author),
+  );
+  return sortedByAuthorName.map((book) => book.author);
+}
+
+function funkcjaToSortPrzyklad1b(books: Books[]) {
+  const sortedByAuthorName = books.toSorted((firstBook, secondBook) =>
+    firstBook.author.localeCompare(secondBook.author),
+  );
+  return sortedByAuthorName.map((book) => book.author);
+}
+
+function funkcjaToSortPrzyklad1c(books: Books[]) {
+  const sortedByAuthorName = books.toSorted((firstBook, secondBook) =>
+    firstBook.author.localeCompare(secondBook.author),
+  );
+  return sortedByAuthorName.map((book) => book.author);
+}
