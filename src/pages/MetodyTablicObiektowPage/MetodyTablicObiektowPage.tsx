@@ -12,7 +12,7 @@ import {
   MetodyTablicReduce,
   MetodyTablicToSort,
 } from "./MetodyTablic/MetodyTablic";
-import { SingleInput } from "../FormsPage/SimpleInput/SimpleInput";
+import { SingleInput } from "../FormsPage/SingleInput/SingleInput";
 import scss from "./MetodyTablicObiektowPage.module.scss";
 export const MetodyTablicObiektowPage = () => {
   const [mainDataTable, setMainDataTable] = useState(contactsTableSource);

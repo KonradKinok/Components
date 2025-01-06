@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import scss from "./FusePage.module.scss";
 import Fuse, { IFuseOptions, FuseResult } from "fuse.js";
-import { SingleInput } from "../FormsPage/SimpleInput/SimpleInput";
+import { SingleInput } from "../FormsPage/SingleInput/SingleInput";
 import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import {

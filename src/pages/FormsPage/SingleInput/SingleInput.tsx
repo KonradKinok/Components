@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import scss from "./SimpleInput.module.scss";
+import scss from "./SingleInput.module.scss";
 import { RxCross1 } from "react-icons/rx";
 import { RxLetterCaseUppercase } from "react-icons/rx";
 
@@ -79,7 +79,6 @@ export const SingleInput: React.FC<SingleInputInterface> = ({
     </>
   );
 };
-
 
 //  //SingleInputDataInParentComponent
 //   const [singleInputValue, setSingleInputValue] = useState<string>("");

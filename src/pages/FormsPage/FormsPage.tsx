@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import customTheme from "./customTheme";
 import AbcOutlinedIcon from "@mui/icons-material/AbcOutlined";
 import FontDownloadOutlinedIcon from "@mui/icons-material/FontDownloadOutlined";
-import { SingleInput, SingleInputB } from "./SimpleInput/SimpleInput";
+import { SingleInput, SingleInputB } from "./SingleInput/SingleInput";
 import { FaUser } from "react-icons/fa";
 
 interface FormValues {

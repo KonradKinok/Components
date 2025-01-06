@@ -23,7 +23,7 @@ const FusePage = lazy(() =>
     default: module.FusePage,
   })),
 );
-// Others
+// Others FormsExamplePage
 const OthersLayoutPage = lazy(
   () => import("../pages/OthersLayoutPage/OthersLayoutPage"),
 );
@@ -37,6 +37,11 @@ const MetodyTablicObiektowPage = lazy(() =>
       default: module.MetodyTablicObiektowPage,
     }),
   ),
+);
+const FormsExamplePage = lazy(() =>
+  import("../pages/FormsExamplePage/FormsExamplePage").then((module) => ({
+    default: module.FormsExamplePage,
+  })),
 );
 // MUI:
 const MuiLayoutPage = lazy(() =>
@@ -84,6 +89,7 @@ export const App: React.FC = () => {
             path="MetodyTablicObiektowPage"
             element={<MetodyTablicObiektowPage />}
           />
+          <Route path="FormsExamplePage" element={<FormsExamplePage />} />
         </Route>
       </Route>
     </Routes>
