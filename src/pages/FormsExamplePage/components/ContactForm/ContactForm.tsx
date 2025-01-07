@@ -5,11 +5,11 @@ import { SingleInput } from "../../../FormsPage/SingleInput/SingleInput";
 import scss from "./ContactForm.module.scss";
 
 export const ContactForm = () => {
-  const [inputName, setInputName] = useState<string>("");
+  const [inputName, setInputName] = useState<string>("Konrad");
   const [inputNameError, setInputNameError] = useState<string>("");
-  const [inputEmail, setInputEmail] = useState<string>("");
+  const [inputEmail, setInputEmail] = useState<string>("konrad@gmail.com");
   const [inputEmailError, setInputEmailError] = useState<string>("");
-  const [inputPhone, setInputPhone] = useState<string>("");
+  const [inputPhone, setInputPhone] = useState<string>("989768567");
   const [inputPhoneError, setInputPhoneError] = useState<string>("");
   const handleSingleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -47,8 +47,33 @@ export const ContactForm = () => {
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/api/contacts/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: inputName,
+          email: inputEmail,
+          phone: inputPhone,
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Contact added:", result);
+      } else {
+        console.error("Failed to add contact:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
-    <form className={scss["contact-form"]}>
+    <form className={scss["contact-form"]} onSubmit={handleSubmit}>
       <h3 className={scss["contact-form-title"]}>Contact Form</h3>
       <SingleInput
         inputName="name"
@@ -80,7 +105,9 @@ export const ContactForm = () => {
         required={true}
         classNameInputContainer={scss["custom-input-container"]}
       />
-      <button type="submit">Submit</button>
+      <button className={scss["button-submit"]} type="submit">
+        Submit
+      </button>
     </form>
   );
 };
