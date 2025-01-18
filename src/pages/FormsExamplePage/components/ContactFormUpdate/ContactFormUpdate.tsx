@@ -3,57 +3,82 @@ import { FaUser, FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { SingleInput } from "../../../FormsPage/SingleInput/SingleInput";
 import scss from "./ContactFormUpdate.module.scss";
-
-export const ContactFormUpdate = () => {
-  const [inputId, setInputId] = useState<string>("BeWfJy-GwNiwFD6lZRKlY");
+import type { Contact } from "../FunctionsContacts/FunctionsContacts";
+interface ContactFormUpdateProps {
+  simpleContact: Contact;
+}
+export const ContactFormUpdate = ({
+  simpleContact,
+}: ContactFormUpdateProps) => {
+  const [inputId, setInputId] = useState<string>("");
   const [inputIdError, setInputIdError] = useState<string>("");
-  const [inputName, setInputName] = useState<string>("Marek");
+  const [inputName, setInputName] = useState<string>("");
   const [inputNameError, setInputNameError] = useState<string>("");
-  const [inputEmail, setInputEmail] = useState<string>("Marek@gmail.com");
+  const [inputEmail, setInputEmail] = useState<string>("");
   const [inputEmailError, setInputEmailError] = useState<string>("");
-  const [inputPhone, setInputPhone] = useState<string>("11111111");
+  const [inputPhone, setInputPhone] = useState<string>("");
   const [inputPhoneError, setInputPhoneError] = useState<string>("");
+  const [checkboxFavorite, setCheckboxFavorite] = useState<boolean>(false);
+  useEffect(() => {
+    if (simpleContact) {
+      setInputId(simpleContact._id || ""); // Ustawienie wartości id
+      setInputName(simpleContact.name || ""); // Ustawienie wartości name
+      setInputEmail(simpleContact.email || ""); // Ustawienie wartości email
+      setInputPhone(simpleContact.phone || ""); // Ustawienie wartości phone
+      setCheckboxFavorite(simpleContact.favorite || false);
+    }
+  }, [simpleContact]); // Tylko wtedy, gdy `simpleContact` się zmieni
+
   const handleSingleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const currentValue = event.target.value;
     const currentName = event.target.name;
+    const currentValue =
+      currentName === "favorite" ? event.target.checked : event.target.value;
+
     let errorTextInput = "";
-    if (currentName === "id") {
-      setInputId(currentValue);
-      if (currentValue.length === 1) {
-        errorTextInput = "Za mało liter";
-      } else if (!currentValue) {
-        errorTextInput = "Musisz wypełnić te pole";
+    if (typeof currentValue === "string") {
+      if (currentName === "id") {
+        setInputId(currentValue as string);
+        if (currentValue.length === 1) {
+          errorTextInput = "Za mało liter";
+        } else if (!currentValue) {
+          errorTextInput = "Musisz wypełnić te pole";
+        }
+        setInputIdError(errorTextInput);
       }
-      setInputIdError(errorTextInput);
+      if (currentName === "name") {
+        setInputName(currentValue);
+        if (currentValue.length === 1) {
+          errorTextInput = "Za mało liter";
+        } else if (!currentValue) {
+          errorTextInput = "Musisz wypełnić te pole";
+        }
+        setInputNameError(errorTextInput);
+      }
+      if (currentName === "email") {
+        setInputEmail(currentValue);
+        if (currentValue.length === 1) {
+          errorTextInput = "Za mało liter";
+        } else if (!currentValue) {
+          errorTextInput = "Musisz wypełnić te pole";
+        }
+        setInputEmailError(errorTextInput);
+      }
+      if (currentName === "phone") {
+        setInputPhone(currentValue);
+        if (currentValue.length === 1) {
+          errorTextInput = "Za mało liter";
+        } else if (!currentValue) {
+          errorTextInput = "Musisz wypełnić te pole";
+        }
+        setInputPhoneError(errorTextInput);
+      }
     }
-    if (currentName === "name") {
-      setInputName(currentValue);
-      if (currentValue.length === 1) {
-        errorTextInput = "Za mało liter";
-      } else if (!currentValue) {
-        errorTextInput = "Musisz wypełnić te pole";
+    if (typeof currentValue === "boolean") {
+      if (currentName === "favorite") {
+        setCheckboxFavorite(currentValue);
       }
-      setInputNameError(errorTextInput);
-    }
-    if (currentName === "email") {
-      setInputEmail(currentValue);
-      if (currentValue.length === 1) {
-        errorTextInput = "Za mało liter";
-      } else if (!currentValue) {
-        errorTextInput = "Musisz wypełnić te pole";
-      }
-      setInputEmailError(errorTextInput);
-    }
-    if (currentName === "phone") {
-      setInputPhone(currentValue);
-      if (currentValue.length === 1) {
-        errorTextInput = "Za mało liter";
-      } else if (!currentValue) {
-        errorTextInput = "Musisz wypełnić te pole";
-      }
-      setInputPhoneError(errorTextInput);
     }
   };
 
@@ -71,6 +96,7 @@ export const ContactFormUpdate = () => {
             name: inputName,
             email: inputEmail,
             phone: inputPhone,
+            favorite: checkboxFavorite,
           }),
         },
       );
@@ -78,6 +104,55 @@ export const ContactFormUpdate = () => {
       if (response.ok) {
         const result = await response.json();
         console.log("Contact updated:", result);
+      } else {
+        const errorData = await response.json(); // Pobranie treści odpowiedzi z błędem
+        console.error(errorData.message); // Wyświetlenie szczegółowego komunikatu błędu
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/contacts/${inputId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Contact deleted:", result);
+      } else {
+        const errorData = await response.json(); // Pobranie treści odpowiedzi z błędem
+        console.error(errorData.message); // Wyświetlenie szczegółowego komunikatu błędu
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  const handleFavorite = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/contacts/${inputId}1/favorite`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            favorite: checkboxFavorite,
+          }),
+        },
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Favorite updated:", result);
       } else {
         const errorData = await response.json(); // Pobranie treści odpowiedzi z błędem
         console.error(errorData.message); // Wyświetlenie szczegółowego komunikatu błędu
@@ -129,8 +204,31 @@ export const ContactFormUpdate = () => {
         required={false}
         classNameInputContainer={scss["custom-input-container"]}
       />
+      <label htmlFor="favorite">
+        <p className={scss["custom-title"]}>Favorite:</p>
+      </label>
+      <input
+        type="checkbox"
+        name="favorite"
+        id="radio-sold"
+        className={scss["toggle-switch"]}
+        checked={checkboxFavorite} // Ustawienie, czy input jest zaznaczony
+        onChange={handleSingleInputChange}
+      />
       <button className={scss["button-submit"]} type="submit">
         Submit
+      </button>
+      <button
+        className={scss["button-submit"]}
+        type="button"
+        onClick={handleDelete}>
+        Delete
+      </button>
+      <button
+        className={scss["button-submit"]}
+        type="button"
+        onClick={handleFavorite}>
+        Favorite
       </button>
     </form>
   );

@@ -43,6 +43,20 @@ const FormsExamplePage = lazy(() =>
     default: module.FormsExamplePage,
   })),
 );
+const FormsExamplePageId = lazy(() =>
+  import("../pages/FormsExamplePage/pages/FormsExamplePageId").then(
+    (module) => ({
+      default: module.FormsExamplePageId,
+    }),
+  ),
+);
+const FormsExamplePageFavorite = lazy(() =>
+  import(
+    "../pages/FormsExamplePage/pages/FormExamplePageFavorite/FormsExamplePageFavorite"
+  ).then((module) => ({
+    default: module.FormsExamplePageFavorite,
+  })),
+);
 // MUI:
 const MuiLayoutPage = lazy(() =>
   import("../pages/MuiPage/MuiLayoutPage/MuiLayoutPage").then((module) => ({
@@ -89,7 +103,11 @@ export const App: React.FC = () => {
             path="MetodyTablicObiektowPage"
             element={<MetodyTablicObiektowPage />}
           />
-          <Route path="FormsExamplePage" element={<FormsExamplePage />} />
+          <Route path="FormsExamplePage">
+            <Route index element={<FormsExamplePage />} />
+            <Route path=":id" element={<FormsExamplePageId />} />
+            <Route path=":id/favorite" element={<FormsExamplePageFavorite />} />
+          </Route>
         </Route>
       </Route>
     </Routes>
