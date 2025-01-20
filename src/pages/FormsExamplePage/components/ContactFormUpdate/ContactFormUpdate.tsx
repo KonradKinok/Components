@@ -138,9 +138,9 @@ export const ContactFormUpdate = ({
   const handleFavorite = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/contacts/${inputId}1/favorite`,
+        `http://localhost:3000/api/contacts/${inputId}/favorite`,
         {
-          method: "PUT",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
