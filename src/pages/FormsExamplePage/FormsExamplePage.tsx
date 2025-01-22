@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import scss from "./FormsExamplePage.module.scss";
 import { ContactForm } from "./components/ContactForm/ContactForm";
-import { ContactFormUpdate } from "./components/ContactFormUpdate/ContactFormUpdate";
+import { ContactFormLogin } from "./components/ContactFormLogin/ContactFormLogin";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { ContactDetails } from "./components/ContactDetails/ContactDetails";
 import { apiClient } from "./components/FunctionsContacts/FunctionsContacts";
@@ -66,6 +66,9 @@ export const FormsExamplePage = () => {
 
   return (
     <div className={scss["FormsExamplePage-container"]}>
+      <div className={scss["FormsExamplePage-contactForm-container"]}>
+        <ContactFormLogin />
+      </div>
       <Link
         className={scss["image-gallery-item"]}
         to={fakeId}
