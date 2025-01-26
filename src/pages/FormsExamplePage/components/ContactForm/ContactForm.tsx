@@ -50,10 +50,16 @@ export const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token"); // Pobierz token z localStorage (lub innego źródła)
+
+      if (!token) {
+        throw new Error("No token found");
+      }
       const response = await fetch("http://localhost:3000/api/contacts/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Dodaj token do nagłówka
         },
         body: JSON.stringify({
           name: inputName,
@@ -73,6 +79,7 @@ export const ContactForm = () => {
       console.error("Error:", error);
     }
   };
+
   return (
     <form className={scss["contact-form"]} onSubmit={handleSubmit}>
       <h3 className={scss["contact-form-title"]}>Contact Form</h3>

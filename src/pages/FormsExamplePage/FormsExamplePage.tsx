@@ -21,10 +21,17 @@ export const FormsExamplePage = () => {
 
   const getContacts = async () => {
     try {
+      const token = localStorage.getItem("token"); // Pobierz token z localStorage (lub innego źródła)
+      console.log("token", token);
+      if (!token) {
+        throw new Error("No token found");
+      }
+
       const response = await fetch("http://localhost:3000/api/contacts/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Dodaj token do nagłówka
         },
       });
 

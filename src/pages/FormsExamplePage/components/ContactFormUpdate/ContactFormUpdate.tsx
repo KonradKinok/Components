@@ -84,6 +84,11 @@ export const ContactFormUpdate = ({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const token = localStorage.getItem("token"); // Pobierz token z localStorage (lub innego źródła)
+
+    if (!token) {
+      throw new Error("No token found");
+    }
     try {
       const response = await fetch(
         `http://localhost:3000/api/contacts/${inputId}`,
@@ -91,6 +96,7 @@ export const ContactFormUpdate = ({
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Dodaj token do nagłówka
           },
           body: JSON.stringify({
             name: inputName,
@@ -114,12 +120,19 @@ export const ContactFormUpdate = ({
   };
   const handleDelete = async () => {
     try {
+      const token = localStorage.getItem("token"); // Pobierz token z localStorage (lub innego źródła)
+
+      if (!token) {
+        throw new Error("No token found");
+      }
+
       const response = await fetch(
         `http://localhost:3000/api/contacts/${inputId}`,
         {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Dodaj token do nagłówka
           },
         },
       );
