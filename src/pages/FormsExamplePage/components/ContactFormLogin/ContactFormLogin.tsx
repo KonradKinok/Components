@@ -6,6 +6,8 @@ import scss from "./ContactFormLogin.module.scss";
 
 export const ContactFormLogin = () => {
   const fieldNames = { name: "name", email: "email", password: "password" };
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [avatar, setAvatar] = useState<string>("");
   const [inputName, setInputName] = useState<string>("Konrad");
   const [inputNameError, setInputNameError] = useState<string>("");
   const [inputEmail, setInputEmail] = useState<string>("konrad@gmail.com");
@@ -64,6 +66,7 @@ export const ContactFormLogin = () => {
       if (response.ok) {
         const result = await response.json();
         console.log("User added:", result);
+        setAvatar(`${result.avatarURL}`);
       } else {
         const errorData = await response.json(); // Pobranie treści odpowiedzi z błędem
         console.error(errorData.message); // Wyświetlenie szczegółowego komunikatu błędu
@@ -86,11 +89,17 @@ export const ContactFormLogin = () => {
       });
 
       if (response.ok) {
-        const { data } = await response.json();
-        const { token } = data;
+        const result = await response.json();
+        console.log("Logged in successfully. Response:", result.data);
+        const { token, user } = result.data;
 
         localStorage.setItem("token", token); // Zapisz token w localStorage
         console.log("Logged in successfully. Token saved:", token);
+        if (user.avatarURL && user.avatarURL.startsWith("https://")) {
+          setAvatar(`${user.avatarURL}`);
+        } else {
+          setAvatar(`http://localhost:3000${user.avatarURL}`);
+        }
       } else {
         const errorData = await response.json(); // Pobranie treści odpowiedzi z błędem
         console.error(errorData.message); // Wyświetlenie szczegółowego komunikatu błędu
@@ -118,6 +127,7 @@ export const ContactFormLogin = () => {
       if (response.ok) {
         // Wylogowanie zakończone sukcesem
         localStorage.removeItem("token"); // Usuń token z localStorage
+        setAvatar(""); // Usuń avatar
         console.log("Logged out successfully");
       } else {
         const errorData = await response.json(); // Pobierz treść błędu
@@ -154,6 +164,49 @@ export const ContactFormLogin = () => {
       console.error("Error:", error.message);
     }
   };
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setSelectedFile(event.target.files[0]); // Zapisz wybrany plik w stanie
+    }
+  };
+  const handleSendAvatar = async () => {
+    if (!selectedFile) {
+      console.error("No file selected!");
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("token"); // Pobierz token z localStorage
+
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      // Utwórz obiekt FormData i dodaj plik
+      const formData = new FormData();
+      formData.append("avatar", selectedFile); // 'avatar' to nazwa klucza backendowego dla pliku
+
+      const response = await fetch("http://localhost:3000/api/users/avatars", {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`, // Dodaj token do nagłówka
+        },
+        body: formData, // Dołącz FormData jako body
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Avatar uploaded successfully. Response:", result);
+        setAvatar(`http://localhost:3000${result.avatarURL}`);
+      } else {
+        const errorData = await response.json(); // Pobranie treści odpowiedzi z błędem
+        console.error("Error:", errorData.message); // Wyświetlenie szczegółowego komunikatu błędu
+      }
+    } catch (error: any) {
+      console.error("Error:", error.message);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -237,6 +290,23 @@ export const ContactFormLogin = () => {
         onClick={handleCheckAuth}>
         Check Auth
       </button>
+      <input
+        type="file"
+        name="avatar"
+        onChange={handleFileChange}
+        accept="image/*"
+      />
+      <button
+        className={scss["button-submit"]}
+        type="button"
+        onClick={handleSendAvatar}>
+        Upload Avatar
+      </button>
+      <div>
+        <img src={avatar} alt="" />
+      </div>
+
+      <a href={avatar}>{avatar}</a>
     </form>
   );
 };
