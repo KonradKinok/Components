@@ -10,7 +10,7 @@ export const ContactFormLogin = () => {
   const [avatar, setAvatar] = useState<string>("");
   const [inputName, setInputName] = useState<string>("Konrad");
   const [inputNameError, setInputNameError] = useState<string>("");
-  const [inputEmail, setInputEmail] = useState<string>("konrad@gmail.com");
+  const [inputEmail, setInputEmail] = useState<string>("konradkonik@o2.pl");
   const [inputEmailError, setInputEmailError] = useState<string>("");
   const [inputPassword, setInputPassword] =
     useState<string>("HasloComponents1");
@@ -164,6 +164,29 @@ export const ContactFormLogin = () => {
       console.error("Error:", error.message);
     }
   };
+  const handleSendEmailAgain = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/users/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: inputEmail,
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Email sent successfully. Response:", result.message);
+      } else {
+        const errorData = await response.json(); // Pobranie treści odpowiedzi z błędem
+        console.error(errorData.message); // Wyświetlenie szczegółowego komunikatu błędu
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       setSelectedFile(event.target.files[0]); // Zapisz wybrany plik w stanie
@@ -289,6 +312,12 @@ export const ContactFormLogin = () => {
         type="button"
         onClick={handleCheckAuth}>
         Check Auth
+      </button>
+      <button
+        className={scss["button-submit"]}
+        type="button"
+        onClick={handleSendEmailAgain}>
+        Send Email Verification Again
       </button>
       <input
         type="file"
