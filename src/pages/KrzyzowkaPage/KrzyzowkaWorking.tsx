@@ -84,7 +84,7 @@ export const KrzyzowkaWorking = () => {
   // }, [dataTable]);
   const resultWords = useMemo(() => {
     console.log("render useMemo");
-    return canCreateWords(
+    return canCreateWordsRepeatChar(
       dataTable.charsInputDataTable,
       dataTable.wordsInputDataTable,
     );
@@ -161,7 +161,7 @@ export const KrzyzowkaWorking = () => {
   );
 };
 
-export function canCreateWords(
+export function canCreateWordsNoRepeatChar(
   lettersArray: string[],
   wordsArray: string[],
 ): string[] {
@@ -192,6 +192,38 @@ export function canCreateWords(
         !availableLetters[letter] ||
         wordLetters[letter] > availableLetters[letter]
       ) {
+        canCreate = false;
+        break; // Jeśli nie możemy utworzyć słowa, przerywamy
+      }
+    }
+
+    // Jeśli możemy utworzyć słowo, dodajemy je do wyniku
+    if (canCreate) {
+      result.push(word);
+    }
+  }
+
+  return result;
+}
+
+export function canCreateWordsRepeatChar(
+  lettersArray: string[],
+  wordsArray: string[],
+): string[] {
+  // Tworzymy zbiór dostępnych liter
+  const availableLetters: Set<string> = new Set(lettersArray);
+
+  // Tworzymy wynikową tablicę
+  const result: string[] = [];
+
+  // Sprawdzamy każde słowo w drugiej tablicy
+  for (const word of wordsArray) {
+    const wordLetters: Set<string> = new Set(word.split("")); // Unikalne litery w słowie
+    let canCreate = true;
+
+    // Sprawdzamy, czy wszystkie litery słowa znajdują się w dostępnych literach
+    for (const letter of wordLetters) {
+      if (!availableLetters.has(letter)) {
         canCreate = false;
         break; // Jeśli nie możemy utworzyć słowa, przerywamy
       }

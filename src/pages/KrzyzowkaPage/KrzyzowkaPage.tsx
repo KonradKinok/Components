@@ -1,6 +1,6 @@
 import React from "react";
 import { KrzyzowkaWorking } from "./KrzyzowkaWorking";
-import { canCreateWords } from "./KrzyzowkaWorking";
+import { canCreateWordsNoRepeatChar } from "./KrzyzowkaWorking";
 import scss from "./KrzyzowkaPage.module.scss";
 
 export default function KrzyzowkaPage() {
@@ -16,7 +16,7 @@ export default function KrzyzowkaPage() {
     "cab",
     "cac",
   ];
-  const resultEgzample1: string[] = canCreateWords(
+  const resultEgzample1: string[] = canCreateWordsNoRepeatChar(
     lettersArrayEgzample1,
     wordsArrayEgzample1,
   );
@@ -58,7 +58,7 @@ export default function KrzyzowkaPage() {
     "wapno",
     "elf",
   ];
-  const resultEgzample2: string[] = canCreateWords(
+  const resultEgzample2: string[] = canCreateWordsNoRepeatChar(
     lettersArrayEgzample2,
     wordsArrayEgzample2,
   );
