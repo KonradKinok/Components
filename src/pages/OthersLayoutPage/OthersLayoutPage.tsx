@@ -14,7 +14,12 @@ export default function OthersLayoutPage() {
         <NavLink
           to="MetodyTablicObiektowPage"
           className={({ isActive }) => (isActive ? scss.active : "")}>
-          Metody tablic i obiektów
+          Metody tablic
+        </NavLink>
+        <NavLink
+          to="MetodyObiektowPage"
+          className={({ isActive }) => (isActive ? scss.active : "")}>
+          Metody obiektów
         </NavLink>
         <NavLink
           to="FormsExamplePage"

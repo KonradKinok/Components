@@ -38,6 +38,11 @@ const MetodyTablicObiektowPage = lazy(() =>
     }),
   ),
 );
+const MetodyObiektowPage = lazy(() =>
+  import("../pages/MetodyObiektowPage/MetodyObiektowPage").then((module) => ({
+    default: module.MetodyObiektowPage,
+  })),
+);
 const FormsExamplePage = lazy(() =>
   import("../pages/FormsExamplePage/FormsExamplePage").then((module) => ({
     default: module.FormsExamplePage,
@@ -103,6 +108,7 @@ export const App: React.FC = () => {
             path="MetodyTablicObiektowPage"
             element={<MetodyTablicObiektowPage />}
           />
+          <Route path="MetodyObiektowPage" element={<MetodyObiektowPage />} />
           <Route path="FormsExamplePage">
             <Route index element={<FormsExamplePage />} />
             <Route path=":id" element={<FormsExamplePageId />} />
