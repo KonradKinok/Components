@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { Navigation } from "../../components/Navigation/Navigation";
 import scss from "./LayoutPages.module.scss";
 import { Footer } from "../../components/Footer/Footer";
+
 export const LayoutPage: React.FC = () => {
   return (
     <div className={scss["main-container"]}>
