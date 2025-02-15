@@ -23,3 +23,5 @@ if (rootElement) {
 } else {
   console.error("Root element not found");
 }
+
+// json-server --watch src/FakeApi/db.json --port 3001

@@ -1,0 +1,4 @@
+{
+  "/transaction": "/transaction",
+  "/transaction/period-data": "/transaction?date=:date"
+}
