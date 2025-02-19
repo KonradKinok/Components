@@ -4,7 +4,7 @@
 {
   "transaction": [
     {
-      "date": "2025-01",
+      "date": "2025-02",
       "incomes": {
         "total": 12000,
         "incomesData": {
@@ -30,34 +30,7 @@
           }
         }
       }
-    },
-    {
-      "date": "2025-02",
-      "incomes": {
-        "total": 15000,
-        "incomesData": {
-          "Salary": {
-            "total": 15000,
-            "Advance": 7000,
-            "Main": 8000
-          }
-        }
-      },
-      "expenses": {
-        "total": 2500,
-        "expensesData": {
-          "Transport": {
-            "total": 5000,
-            "Service": 4000,
-            "Washing": 1000
-          },
-          "Home": {
-            "total": 1500,
-            "Plant": 300,
-            "Wardrobe": 1200
-          }
-        }
-      }
     }
+    
   ]
 }
