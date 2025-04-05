@@ -75,6 +75,31 @@ export default function CheckBoxPage() {
           </div>
         </div>
       </div>
+      <div className={scss["checkbox1-main-container"]}>
+        <label className={scss["checkbox-container"]}>
+          <input type="checkbox" id="checkbox1" />
+
+          <span className={scss["checkmark"]}></span>
+        </label>
+      </div>
+      <div className={scss["checkbox2-main-container"]}>
+        <div className={scss["checkbox-wrapper-4"]}>
+          <input className={scss["inp-cbx"]} id="morning" type="checkbox" />
+          <label className={scss["cbx"]} htmlFor="morning">
+            <span>
+              <svg width="12px" height="10px">
+                <use xlinkHref="#check-4"></use>
+              </svg>
+            </span>
+            <span>Morning</span>
+          </label>
+          <svg className={scss["inline-svg"]}>
+            <symbol id="check-4" viewBox="0 0 12 10">
+              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </symbol>
+          </svg>
+        </div>
+      </div>
     </div>
   );
 }
