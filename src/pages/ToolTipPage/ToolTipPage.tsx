@@ -1,7 +1,10 @@
 import React from "react";
+import { Tooltip } from "react-tooltip";
 import scss from "./ToolTipPage.module.scss";
 import toast from "react-hot-toast";
 import { FcAlarmClock } from "react-icons/fc";
+import { ToolTipComponent } from "./ToolTipComponent/ToolTipComponent";
+
 let toastLoading: string | null = null;
 
 export default function ToolTipPage() {
@@ -104,6 +107,31 @@ export default function ToolTipPage() {
           </a>
           .
         </p>
+      </div>
+      <div className={scss["container-tooltip-2"]}>
+        <h2>2. ToolTip component</h2>
+        <ToolTipComponent tooltipText="2. ToolTip component">
+          <span data-tooltip="From just €14.50/month.">The unlimited</span>
+        </ToolTipComponent>
+      </div>
+      <div className={scss["container-tooltip-3"]}>
+        <h2>3. ToolTip github.com/ReactTooltip/react-tooltip </h2>
+        <a data-tooltip-id="my-tooltip" data-tooltip-content="Hello world!">
+          ◕‿‿◕
+        </a>
+        <Tooltip
+          id="my-tooltip"
+          className={scss["tooltip-custom"]}
+          offset={5}
+        />
+        <div className={scss["tooltip-3-container"]}>
+          <span
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Hello world!">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
+            quisquam!
+          </span>
+        </div>
       </div>
       <div className={scss["toast"]}>
         <h2>2. Toast</h2>
