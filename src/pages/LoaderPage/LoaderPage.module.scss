@@ -1,0 +1,13 @@
+.container-loader-page {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 15px;
+
+    .container {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 50px;
+    }
+}

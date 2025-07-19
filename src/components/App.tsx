@@ -18,6 +18,8 @@ const ComboBoxPage = lazy(() => import("../pages/ComboBoxPage/ComboBoxPage"));
 const ButtonPage = lazy(() => import("../pages/ButtonPage/ButtonPage"));
 const VideoPage = lazy(() => import("../pages/VideoPage/VideoPage"));
 const FormsPage = lazy(() => import("../pages/FormsPage/FormsPage"));
+const LoaderPage = lazy(() => import("../pages/LoaderPage/LoaderPage"));
+
 const FusePage = lazy(() =>
   import("../pages/FusePage/FusePage").then((module) => ({
     default: module.FusePage,
@@ -96,6 +98,7 @@ export const App: React.FC = () => {
           <Route path="video" element={<VideoPage />} />
           <Route path="forms" element={<FormsPage />} />
           <Route path="fuse-page" element={<FusePage />} />
+          <Route path="loader-page" element={<LoaderPage />} />
           <Route path="mui-layout-page" element={<MuiLayoutPage />}>
             {/* <Route path="mui-home-page" element={<MuiHome />} /> */}
             <Route index element={<MuiHome />} />
