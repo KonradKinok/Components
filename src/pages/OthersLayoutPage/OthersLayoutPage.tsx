@@ -26,6 +26,11 @@ export default function OthersLayoutPage() {
           className={({ isActive }) => (isActive ? scss.active : "")}>
           Forms Example Page
         </NavLink>
+        <NavLink
+          to="JsonPage"
+          className={({ isActive }) => (isActive ? scss.active : "")}>
+          Json Page
+        </NavLink>
       </nav>
       <div className={scss["main-others"]}>
         <Suspense fallback={<div>Loading page...</div>}>

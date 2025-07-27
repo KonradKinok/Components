@@ -64,6 +64,7 @@ const FormsExamplePageFavorite = lazy(() =>
     default: module.FormsExamplePageFavorite,
   })),
 );
+const JsonPage = lazy(() => import("../pages/JsonPage/JsonPage"));
 // MUI:
 const MuiLayoutPage = lazy(() =>
   import("../pages/MuiPage/MuiLayoutPage/MuiLayoutPage").then((module) => ({
@@ -117,6 +118,7 @@ export const App: React.FC = () => {
             <Route path=":id" element={<FormsExamplePageId />} />
             <Route path=":id/favorite" element={<FormsExamplePageFavorite />} />
           </Route>
+          <Route path="JsonPage" element={<JsonPage />} />
         </Route>
       </Route>
     </Routes>
