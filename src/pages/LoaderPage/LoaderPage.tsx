@@ -1,5 +1,6 @@
 import React from "react";
 import scss from "./LoaderPage.module.scss";
+import { LoaderKulki } from "./LoaderKulki";
 import { Grid, RotatingLines } from "react-loader-spinner";
 
 export default function LoaderPage() {
@@ -29,6 +30,53 @@ export default function LoaderPage() {
             wrapperStyle={{}}
             wrapperClass="grid-wrapper"
           />
+        </div>
+        <div className={scss["container-kulki"]}>
+          <div className={scss["main"]}>
+            <div className={scss["up"]}>
+              {/* <div className={scss["loaders"]}>
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+                <div className={scss["loader"]} />
+              </div> */}
+              <div className={scss["loadersB"]}>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball0"]} />
+                </div>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball1"]} />
+                </div>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball2"]} />
+                </div>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball3"]} />
+                </div>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball4"]} />
+                </div>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball5"]} />
+                </div>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball6"]} />
+                </div>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball7"]} />
+                </div>
+                <div className={scss["loaderA"]}>
+                  <div className={scss["ball8"]} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

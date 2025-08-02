@@ -18,13 +18,14 @@ const ComboBoxPage = lazy(() => import("../pages/ComboBoxPage/ComboBoxPage"));
 const ButtonPage = lazy(() => import("../pages/ButtonPage/ButtonPage"));
 const VideoPage = lazy(() => import("../pages/VideoPage/VideoPage"));
 const FormsPage = lazy(() => import("../pages/FormsPage/FormsPage"));
-const LoaderPage = lazy(() => import("../pages/LoaderPage/LoaderPage"));
 
 const FusePage = lazy(() =>
   import("../pages/FusePage/FusePage").then((module) => ({
     default: module.FusePage,
   })),
 );
+const LoaderPage = lazy(() => import("../pages/LoaderPage/LoaderPage"));
+const TextPage = lazy(() => import("../pages/TextPage/TextPage"));
 // Others FormsExamplePage
 const OthersLayoutPage = lazy(
   () => import("../pages/OthersLayoutPage/OthersLayoutPage"),
@@ -65,6 +66,7 @@ const FormsExamplePageFavorite = lazy(() =>
   })),
 );
 const JsonPage = lazy(() => import("../pages/JsonPage/JsonPage"));
+
 // MUI:
 const MuiLayoutPage = lazy(() =>
   import("../pages/MuiPage/MuiLayoutPage/MuiLayoutPage").then((module) => ({
@@ -100,6 +102,7 @@ export const App: React.FC = () => {
           <Route path="forms" element={<FormsPage />} />
           <Route path="fuse-page" element={<FusePage />} />
           <Route path="loader-page" element={<LoaderPage />} />
+          <Route path="text-page" element={<TextPage />} />
           <Route path="mui-layout-page" element={<MuiLayoutPage />}>
             {/* <Route path="mui-home-page" element={<MuiHome />} /> */}
             <Route index element={<MuiHome />} />
