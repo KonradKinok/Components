@@ -18,6 +18,17 @@ export default function GridPage() {
         <div className={scss["item4"]}>Right</div>
         <div className={scss["item5"]}>Footer</div>
       </div>
+      <div className={scss["user-label-container"]}>
+        <p className={`${scss["user-label"]}`}>
+          <span className={`${scss["first-span"]}`}>USER:</span>
+          <span className={scss["second-span"]}>Konrad Konik</span>
+        </p>
+        <p className={scss["user-label"]}>
+          <span className={`${scss["first-span"]}`}>Hostname:</span>{" "}
+          <span className={scss["second-span"]}>DESKTOP-JNQ2TTN</span>
+        </p>
+      </div>
+      <div className={scss["grid-container"]}></div>
     </section>
   );
 }

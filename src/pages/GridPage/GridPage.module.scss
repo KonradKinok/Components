@@ -35,3 +35,24 @@
     padding: 20px 0;
     font-size: 30px;
 }
+
+.user-label-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.user-label {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+
+}
+
+.first-span {
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+.second-span {
+    align-self: flex-start;
+}
