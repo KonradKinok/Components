@@ -107,6 +107,13 @@ export default function IconsPage() {
           <div className={scss["icon-change-figure"]}></div>
         </div>
       </article>
+      <article className={scss["article-icons-page-7"]}>
+        <div>
+          <p>
+            📊📉📈📅📆🗓️📅📄⛔⚠️🖨️🖥️💽💾💿📀📔📕📖📗📘📚📓📒📃📜📄📄📑📝📧📫🎫
+          </p>
+        </div>
+      </article>
     </section>
   );
 }
