@@ -110,7 +110,7 @@ export default function IconsPage() {
       <article className={scss["article-icons-page-7"]}>
         <div>
           <p>
-            📊📉📈📅📆🗓️📅📄⛔⚠️🖨️🖥️💽💾💿📀📔📕📖📗📘📚📓📒📃📜📄📄📑📝📧📫🎫
+            📊📉📈📅📆🗓️📅📄⛔⚠️🖨️🖥️💽💾💿📀📔📕📖📗📘📚📓📒📃📜📄📄📑📝📧📫🎫0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟
           </p>
         </div>
       </article>
